@@ -1,0 +1,6664 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NEXORA — техника и электроника с доставкой</title>
+
+<meta name="description"
+content="NEXORA — современный интернет-магазин электроники, смартфонов, ноутбуков, наушников, игровых устройств и аксессуаров с доставкой.">
+
+<meta name="keywords"
+content="магазин электроники, смартфоны, ноутбуки, техника, наушники, игровые устройства, аксессуары, доставка">
+
+<style>
+
+/* =========================================================
+   NEXORA
+   ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ
+========================================================= */
+
+:root{
+    --bg:#0b0d12;
+    --bg-2:#10131b;
+    --surface:#151923;
+    --surface-2:#1b1f2b;
+    --surface-3:#222735;
+
+    --text:#f4f6fb;
+    --muted:#9299aa;
+
+    --purple:#7657ff;
+    --purple-dark:#5235d5;
+
+    --blue:#2e9bff;
+    --orange:#ff8b2c;
+    --green:#36d98b;
+    --red:#ff5574;
+    --yellow:#ffd15c;
+
+    --border:rgba(255,255,255,.08);
+
+    --shadow:0 20px 60px rgba(0,0,0,.28);
+    --radius:24px;
+    --radius-small:14px;
+
+    --container:1240px;
+
+    --transition:.25s ease;
+}
+
+body.light{
+    --bg:#17131c;
+    --bg-2:#211a27;
+    --surface:#29212f;
+    --surface-2:#32283a;
+    --surface-3:#3b3045;
+    --text:#fff;
+    --muted:#b8aebe;
+    --border:rgba(255,255,255,.09);
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(118,87,255,.13),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(46,155,255,.08),
+            transparent 25%
+        ),
+        var(--bg);
+
+    color:var(--text);
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+button,
+input,
+textarea,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+img{
+    display:block;
+    width:100%;
+}
+
+ul{
+    list-style:none;
+}
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar{
+    width:9px;
+}
+
+::-webkit-scrollbar-track{
+    background:#090a0e;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#3a4050;
+    border-radius:10px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:var(--purple);
+}
+
+/* =========================================================
+   UTILITIES
+========================================================= */
+
+.container{
+    width:min(var(--container), calc(100% - 40px));
+    margin:auto;
+}
+
+.hidden{
+    display:none!important;
+}
+
+.text-purple{
+    color:var(--purple);
+}
+
+.text-blue{
+    color:var(--blue);
+}
+
+.text-orange{
+    color:var(--orange);
+}
+
+.text-green{
+    color:var(--green);
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:rgba(11,13,18,.88);
+    backdrop-filter:blur(22px);
+
+    border-bottom:1px solid var(--border);
+}
+
+.header-inner{
+    height:78px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:25px;
+}
+
+/* LOGO */
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:11px;
+
+    font-weight:900;
+    font-size:21px;
+    letter-spacing:-.8px;
+
+    min-width:max-content;
+}
+
+.logo-mark{
+    width:39px;
+    height:39px;
+
+    border-radius:12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--purple),
+            var(--blue)
+        );
+
+    display:grid;
+    place-items:center;
+
+    box-shadow:
+        0 8px 25px rgba(118,87,255,.3);
+}
+
+.logo-mark span{
+    width:16px;
+    height:16px;
+
+    border:3px solid #fff;
+    border-radius:5px;
+
+    transform:rotate(45deg);
+}
+
+/* NAV */
+
+.nav{
+    display:flex;
+    align-items:center;
+    gap:7px;
+}
+
+.nav a{
+    padding:10px 13px;
+
+    color:var(--muted);
+    font-size:14px;
+    font-weight:600;
+
+    border-radius:10px;
+
+    transition:var(--transition);
+}
+
+.nav a:hover,
+.nav a.active{
+    color:#fff;
+    background:var(--surface-2);
+}
+
+/* HEADER ACTIONS */
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.icon-button{
+    position:relative;
+
+    width:42px;
+    height:42px;
+
+    display:grid;
+    place-items:center;
+
+    border:1px solid var(--border);
+    border-radius:12px;
+
+    background:var(--surface);
+
+    color:var(--text);
+
+    transition:var(--transition);
+}
+
+.icon-button:hover{
+    transform:translateY(-2px);
+    border-color:rgba(118,87,255,.6);
+    background:var(--surface-2);
+}
+
+.icon-button svg{
+    width:19px;
+    height:19px;
+}
+
+.counter{
+    position:absolute;
+
+    top:-5px;
+    right:-5px;
+
+    min-width:18px;
+    height:18px;
+
+    padding:0 4px;
+
+    border-radius:20px;
+
+    display:grid;
+    place-items:center;
+
+    font-size:10px;
+    font-weight:800;
+
+    background:var(--orange);
+    color:#111;
+}
+
+/* MOBILE MENU */
+
+.mobile-menu{
+    display:none;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    padding:75px 0 50px;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    gap:40px;
+    align-items:center;
+}
+
+.hero-content{
+    position:relative;
+}
+
+.hero-label{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    padding:8px 12px;
+
+    border:1px solid rgba(118,87,255,.3);
+    border-radius:30px;
+
+    background:rgba(118,87,255,.08);
+
+    color:#bcb1ff;
+
+    font-size:12px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:1px;
+
+    margin-bottom:22px;
+}
+
+.hero-label i{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+    background:var(--green);
+
+    box-shadow:0 0 12px var(--green);
+}
+
+.hero h1{
+    max-width:720px;
+
+    font-size:
+        clamp(46px, 6vw, 84px);
+
+    line-height:.94;
+
+    letter-spacing:-4px;
+
+    margin-bottom:25px;
+}
+
+.hero h1 span{
+    background:
+        linear-gradient(
+            90deg,
+            var(--purple),
+            var(--blue),
+            var(--orange)
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.hero-description{
+    max-width:600px;
+
+    color:var(--muted);
+
+    font-size:17px;
+    line-height:1.75;
+
+    margin-bottom:30px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+/* BUTTONS */
+
+.btn{
+    border:0;
+
+    border-radius:13px;
+
+    padding:14px 20px;
+
+    font-size:14px;
+    font-weight:800;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+
+    transition:var(--transition);
+}
+
+.btn svg{
+    width:17px;
+    height:17px;
+}
+
+.btn-primary{
+    background:
+        linear-gradient(
+            135deg,
+            var(--purple),
+            #6243e9
+        );
+
+    color:#fff;
+
+    box-shadow:
+        0 12px 30px rgba(118,87,255,.25);
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:
+        0 18px 40px rgba(118,87,255,.4);
+}
+
+.btn-secondary{
+    background:var(--surface);
+    border:1px solid var(--border);
+    color:var(--text);
+}
+
+.btn-secondary:hover{
+    background:var(--surface-2);
+    transform:translateY(-2px);
+}
+
+/* HERO VISUAL */
+
+.hero-visual{
+    min-height:530px;
+    position:relative;
+
+    border-radius:35px;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #171326,
+            #101a27
+        );
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+}
+
+.hero-main-image{
+    height:100%;
+    min-height:530px;
+
+    object-fit:cover;
+
+    opacity:.78;
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 25%,
+            rgba(7,8,12,.85)
+        );
+}
+
+.hero-product-card{
+    position:absolute;
+
+    left:25px;
+    right:25px;
+    bottom:25px;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    background:rgba(17,19,27,.85);
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.12);
+}
+
+.hero-product-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+
+    margin-bottom:10px;
+}
+
+.hero-product-top strong{
+    font-size:18px;
+}
+
+.hero-price{
+    font-size:22px;
+    font-weight:900;
+    color:#fff;
+}
+
+.hero-product-card p{
+    color:#9da4b5;
+    font-size:13px;
+}
+
+/* FLOATING CARDS */
+
+.floating-card{
+    position:absolute;
+
+    padding:13px 15px;
+
+    border-radius:14px;
+
+    background:rgba(25,28,38,.9);
+    border:1px solid rgba(255,255,255,.1);
+
+    backdrop-filter:blur(16px);
+
+    box-shadow:var(--shadow);
+
+    font-size:12px;
+}
+
+.floating-one{
+    top:25px;
+    left:-20px;
+}
+
+.floating-two{
+    top:110px;
+    right:-20px;
+}
+
+.floating-card strong{
+    display:block;
+    margin-bottom:4px;
+    font-size:15px;
+}
+
+.floating-card span{
+    color:var(--muted);
+}
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats{
+    padding:25px 0 80px;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+
+    border:1px solid var(--border);
+    border-radius:20px;
+
+    overflow:hidden;
+
+    background:var(--surface);
+}
+
+.stat{
+    padding:25px;
+
+    border-right:1px solid var(--border);
+}
+
+.stat:last-child{
+    border-right:0;
+}
+
+.stat strong{
+    display:block;
+
+    font-size:28px;
+    font-weight:900;
+
+    margin-bottom:6px;
+}
+
+.stat span{
+    color:var(--muted);
+    font-size:13px;
+}
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section{
+    padding:85px 0;
+}
+
+.section-header{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:25px;
+
+    margin-bottom:35px;
+}
+
+.section-kicker{
+    color:var(--purple);
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    font-size:11px;
+    font-weight:900;
+
+    margin-bottom:10px;
+}
+
+.section-title{
+    font-size:clamp(32px,4vw,52px);
+
+    letter-spacing:-2px;
+    line-height:1;
+
+    margin-bottom:10px;
+}
+
+.section-description{
+    max-width:570px;
+
+    color:var(--muted);
+    line-height:1.65;
+    font-size:14px;
+}
+
+/* =========================================================
+   CATEGORIES
+========================================================= */
+
+.category-grid{
+    display:grid;
+    grid-template-columns:
+        repeat(6,1fr);
+
+    gap:12px;
+}
+
+.category-card{
+    min-height:150px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    border:1px solid var(--border);
+    border-radius:18px;
+
+    background:var(--surface);
+
+    padding:18px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+
+    transition:var(--transition);
+}
+
+.category-card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(118,87,255,.5);
+}
+
+.category-card img{
+    position:absolute;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    opacity:.35;
+
+    transition:.4s ease;
+}
+
+.category-card:hover img{
+    opacity:.55;
+    transform:scale(1.07);
+}
+
+.category-card::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 20%,
+            rgba(8,9,13,.9)
+        );
+}
+
+.category-info{
+    position:relative;
+    z-index:2;
+}
+
+.category-info strong{
+    display:block;
+    font-size:15px;
+    margin-bottom:5px;
+}
+
+.category-info span{
+    color:#aab0bd;
+    font-size:11px;
+}
+
+/* =========================================================
+   CATALOG
+========================================================= */
+
+.catalog-section{
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(118,87,255,.025),
+            transparent
+        );
+}
+
+.catalog-toolbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:15px;
+
+    margin-bottom:25px;
+}
+
+.search-box{
+    flex:1;
+    max-width:470px;
+
+    position:relative;
+}
+
+.search-box svg{
+    position:absolute;
+
+    left:15px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:18px;
+    color:#858c9c;
+}
+
+.search-box input{
+    width:100%;
+
+    height:48px;
+
+    padding:0 15px 0 45px;
+
+    border-radius:13px;
+
+    border:1px solid var(--border);
+
+    outline:none;
+
+    background:var(--surface);
+
+    color:var(--text);
+
+    transition:var(--transition);
+}
+
+.search-box input:focus{
+    border-color:rgba(118,87,255,.7);
+    box-shadow:0 0 0 3px rgba(118,87,255,.08);
+}
+
+.select-box{
+    position:relative;
+}
+
+.select-box select{
+    appearance:none;
+
+    min-width:190px;
+
+    height:48px;
+
+    padding:0 40px 0 15px;
+
+    border-radius:13px;
+
+    border:1px solid var(--border);
+
+    background:var(--surface);
+
+    color:var(--text);
+
+    outline:none;
+
+    cursor:pointer;
+}
+
+.select-arrow{
+    position:absolute;
+
+    right:15px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    pointer-events:none;
+}
+
+/* PRODUCTS */
+
+.products-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:18px;
+}
+
+.product-card{
+    position:relative;
+
+    overflow:hidden;
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    background:var(--surface);
+
+    transition:var(--transition);
+}
+
+.product-card:hover{
+    transform:translateY(-6px);
+
+    border-color:
+        rgba(118,87,255,.4);
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.25);
+}
+
+.product-image{
+    position:relative;
+
+    height:250px;
+
+    overflow:hidden;
+
+    background:#202532;
+}
+
+.product-image img{
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.45s ease;
+}
+
+.product-card:hover .product-image img{
+    transform:scale(1.06);
+}
+
+.product-badge{
+    position:absolute;
+
+    top:13px;
+    left:13px;
+
+    padding:6px 9px;
+
+    border-radius:8px;
+
+    background:var(--orange);
+
+    color:#111;
+
+    font-size:10px;
+    font-weight:900;
+
+    z-index:2;
+}
+
+.favorite{
+    position:absolute;
+
+    top:12px;
+    right:12px;
+
+    width:38px;
+    height:38px;
+
+    display:grid;
+    place-items:center;
+
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:11px;
+
+    background:rgba(10,12,17,.7);
+    backdrop-filter:blur(8px);
+
+    color:#fff;
+
+    z-index:2;
+
+    transition:var(--transition);
+}
+
+.favorite:hover{
+    background:var(--red);
+}
+
+.favorite.active{
+    color:var(--red);
+    border-color:rgba(255,85,116,.4);
+}
+
+.product-body{
+    padding:18px;
+}
+
+.product-category{
+    color:var(--purple);
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+    font-size:9px;
+    font-weight:900;
+
+    margin-bottom:8px;
+}
+
+.product-title{
+    font-size:16px;
+    line-height:1.35;
+
+    margin-bottom:7px;
+}
+
+.product-description{
+    color:var(--muted);
+
+    font-size:12px;
+    line-height:1.55;
+
+    min-height:38px;
+
+    margin-bottom:15px;
+}
+
+.product-rating{
+    display:flex;
+    align-items:center;
+    gap:7px;
+
+    margin-bottom:14px;
+
+    font-size:12px;
+}
+
+.rating-number{
+    color:var(--yellow);
+    font-weight:900;
+}
+
+.rating-count{
+    color:#707786;
+}
+
+.product-bottom{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:10px;
+}
+
+.product-price strong{
+    display:block;
+
+    font-size:19px;
+    font-weight:900;
+}
+
+.product-old{
+    color:#686f7e;
+
+    text-decoration:line-through;
+
+    font-size:11px;
+}
+
+.add-cart{
+    width:43px;
+    height:43px;
+
+    display:grid;
+    place-items:center;
+
+    border:0;
+    border-radius:12px;
+
+    background:var(--purple);
+
+    color:#fff;
+
+    transition:var(--transition);
+}
+
+.add-cart:hover{
+    background:var(--blue);
+    transform:scale(1.06);
+}
+
+.add-cart svg{
+    width:18px;
+}
+
+/* =========================================================
+   ADVANTAGES
+========================================================= */
+
+.advantages{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.advantage{
+    padding:28px;
+
+    border:1px solid var(--border);
+    border-radius:20px;
+
+    background:var(--surface);
+}
+
+.advantage-icon{
+    width:50px;
+    height:50px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:15px;
+
+    margin-bottom:20px;
+}
+
+.advantage-icon.purple{
+    background:rgba(118,87,255,.14);
+    color:var(--purple);
+}
+
+.advantage-icon.blue{
+    background:rgba(46,155,255,.12);
+    color:var(--blue);
+}
+
+.advantage-icon.green{
+    background:rgba(54,217,139,.1);
+    color:var(--green);
+}
+
+.advantage-icon svg{
+    width:22px;
+}
+
+.advantage h3{
+    font-size:18px;
+    margin-bottom:9px;
+}
+
+.advantage p{
+    color:var(--muted);
+
+    line-height:1.7;
+    font-size:13px;
+}
+
+/* =========================================================
+   BANNER
+========================================================= */
+
+.promo-banner{
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:28px;
+
+    min-height:330px;
+
+    display:flex;
+    align-items:center;
+
+    padding:50px;
+
+    background:
+        linear-gradient(
+            115deg,
+            #211344,
+            #172b49,
+            #402015
+        );
+
+    border:1px solid var(--border);
+}
+
+.promo-banner::before{
+    content:"";
+
+    position:absolute;
+
+    width:430px;
+    height:430px;
+
+    right:-120px;
+    top:-180px;
+
+    border-radius:50%;
+
+    border:80px solid rgba(118,87,255,.15);
+}
+
+.promo-content{
+    position:relative;
+    z-index:2;
+
+    max-width:600px;
+}
+
+.promo-content small{
+    color:#9da7ff;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    font-weight:900;
+
+    font-size:10px;
+}
+
+.promo-content h2{
+    font-size:clamp(34px,4vw,56px);
+
+    letter-spacing:-2px;
+
+    margin:13px 0;
+}
+
+.promo-content p{
+    color:#b5bdce;
+
+    line-height:1.65;
+
+    margin-bottom:23px;
+}
+
+.promo-code{
+    display:inline-flex;
+
+    align-items:center;
+
+    padding:11px 15px;
+
+    border-radius:10px;
+
+    background:rgba(0,0,0,.25);
+
+    border:1px dashed rgba(255,255,255,.25);
+
+    font-weight:900;
+
+    letter-spacing:1px;
+
+    margin-bottom:22px;
+}
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about-grid{
+    display:grid;
+    grid-template-columns:.85fr 1.15fr;
+    gap:50px;
+    align-items:center;
+}
+
+.about-image{
+    height:550px;
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    border:1px solid var(--border);
+}
+
+.about-image img{
+    height:100%;
+    object-fit:cover;
+}
+
+.about-image-label{
+    position:absolute;
+
+    left:20px;
+    bottom:20px;
+
+    padding:17px;
+
+    border-radius:15px;
+
+    background:rgba(12,14,19,.85);
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.about-image-label strong{
+    display:block;
+    font-size:25px;
+}
+
+.about-image-label span{
+    color:var(--muted);
+    font-size:12px;
+}
+
+.about-content p{
+    color:var(--muted);
+
+    line-height:1.8;
+
+    font-size:14px;
+
+    margin-bottom:20px;
+}
+
+.about-list{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:12px;
+
+    margin-top:25px;
+}
+
+.about-list li{
+    padding:14px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:13px;
+
+    color:#c9cfdb;
+
+    font-size:12px;
+
+    display:flex;
+    gap:9px;
+    align-items:center;
+}
+
+.check{
+    width:20px;
+    height:20px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:6px;
+
+    background:rgba(54,217,139,.12);
+    color:var(--green);
+
+    flex-shrink:0;
+}
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.service{
+    padding:25px;
+
+    min-height:240px;
+
+    border:1px solid var(--border);
+    border-radius:20px;
+
+    background:var(--surface);
+
+    position:relative;
+    overflow:hidden;
+
+    transition:var(--transition);
+}
+
+.service:hover{
+    transform:translateY(-5px);
+}
+
+.service-number{
+    position:absolute;
+
+    right:20px;
+    top:15px;
+
+    font-size:45px;
+
+    color:rgba(255,255,255,.04);
+
+    font-weight:900;
+}
+
+.service-icon{
+    width:45px;
+    height:45px;
+
+    border-radius:13px;
+
+    display:grid;
+    place-items:center;
+
+    margin-bottom:30px;
+
+    background:rgba(118,87,255,.12);
+    color:var(--purple);
+}
+
+.service-icon svg{
+    width:21px;
+}
+
+.service h3{
+    font-size:17px;
+    margin-bottom:10px;
+}
+
+.service p{
+    color:var(--muted);
+
+    line-height:1.65;
+
+    font-size:12px;
+}
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+.faq-list{
+    max-width:850px;
+    margin:auto;
+
+    display:grid;
+    gap:10px;
+}
+
+.faq{
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    background:var(--surface);
+}
+
+.faq-question{
+    width:100%;
+
+    padding:20px;
+
+    border:0;
+
+    background:none;
+
+    color:var(--text);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    text-align:left;
+
+    font-weight:800;
+
+    font-size:14px;
+}
+
+.faq-question span:last-child{
+    width:30px;
+    height:30px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:9px;
+
+    background:var(--surface-3);
+
+    transition:var(--transition);
+}
+
+.faq.open .faq-question span:last-child{
+    transform:rotate(45deg);
+    background:var(--purple);
+}
+
+.faq-answer{
+    max-height:0;
+
+    overflow:hidden;
+
+    transition:.3s ease;
+}
+
+.faq-answer p{
+    padding:0 20px 20px;
+
+    color:var(--muted);
+
+    font-size:13px;
+    line-height:1.7;
+}
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+    gap:25px;
+}
+
+.contact-card{
+    padding:30px;
+
+    border:1px solid var(--border);
+    border-radius:22px;
+
+    background:var(--surface);
+}
+
+.contact-card h3{
+    font-size:23px;
+    margin-bottom:10px;
+}
+
+.contact-card > p{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.7;
+    margin-bottom:25px;
+}
+
+.contact-items{
+    display:grid;
+    gap:10px;
+}
+
+.contact-item{
+    display:flex;
+    gap:13px;
+
+    padding:14px;
+
+    border-radius:13px;
+
+    background:var(--surface-2);
+}
+
+.contact-item-icon{
+    width:40px;
+    height:40px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:10px;
+
+    background:rgba(118,87,255,.12);
+    color:var(--purple);
+
+    flex-shrink:0;
+}
+
+.contact-item strong{
+    display:block;
+
+    font-size:12px;
+    margin-bottom:4px;
+}
+
+.contact-item span{
+    color:var(--muted);
+    font-size:11px;
+}
+
+/* FORM */
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.form-group.full{
+    grid-column:1/-1;
+}
+
+.form-group label{
+    font-size:11px;
+    font-weight:800;
+    color:#b5bbca;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+    width:100%;
+
+    border:1px solid var(--border);
+
+    background:var(--surface-2);
+
+    color:var(--text);
+
+    border-radius:12px;
+
+    outline:none;
+
+    padding:13px 14px;
+
+    transition:var(--transition);
+}
+
+.form-group input{
+    height:48px;
+}
+
+.form-group textarea{
+    min-height:130px;
+    resize:vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+    border-color:var(--purple);
+
+    box-shadow:
+        0 0 0 3px rgba(118,87,255,.08);
+}
+
+.error-text{
+    color:var(--red);
+    font-size:10px;
+    min-height:12px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+    margin-top:50px;
+
+    padding:55px 0 25px;
+
+    border-top:1px solid var(--border);
+
+    background:#08090d;
+}
+
+.footer-grid{
+    display:grid;
+
+    grid-template-columns:1.4fr 1fr 1fr 1fr;
+
+    gap:35px;
+
+    padding-bottom:40px;
+}
+
+.footer-brand p{
+    max-width:350px;
+
+    color:#737b8b;
+
+    font-size:12px;
+
+    line-height:1.7;
+
+    margin:15px 0;
+}
+
+.footer h4{
+    font-size:12px;
+
+    margin-bottom:16px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+}
+
+.footer ul{
+    display:grid;
+    gap:10px;
+}
+
+.footer li a{
+    color:#777f8f;
+
+    font-size:12px;
+
+    transition:var(--transition);
+}
+
+.footer li a:hover{
+    color:#fff;
+}
+
+.footer-bottom{
+    border-top:1px solid var(--border);
+
+    padding-top:22px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    color:#666d7b;
+
+    font-size:11px;
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal{
+    position:fixed;
+
+    inset:0;
+
+    z-index:2000;
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    background:rgba(0,0,0,.7);
+
+    backdrop-filter:blur(12px);
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:min(850px,100%);
+
+    max-height:90vh;
+
+    overflow:auto;
+
+    border:1px solid var(--border);
+
+    border-radius:25px;
+
+    background:var(--surface);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.5);
+
+    animation:modalIn .25s ease;
+}
+
+@keyframes modalIn{
+    from{
+        opacity:0;
+        transform:translateY(20px) scale(.97);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+.modal-header{
+    padding:20px 22px;
+
+    border-bottom:1px solid var(--border);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+}
+
+.modal-header h3{
+    font-size:18px;
+}
+
+.modal-close{
+    width:38px;
+    height:38px;
+
+    display:grid;
+    place-items:center;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    background:var(--surface-2);
+
+    color:var(--text);
+}
+
+.modal-content{
+    padding:22px;
+}
+
+/* PRODUCT MODAL */
+
+.product-detail{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.product-detail-image{
+    height:400px;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    background:#202530;
+}
+
+.product-detail-image img{
+    height:100%;
+    object-fit:cover;
+}
+
+.detail-category{
+    color:var(--purple);
+
+    text-transform:uppercase;
+
+    letter-spacing:1.5px;
+
+    font-size:10px;
+    font-weight:900;
+
+    margin-bottom:10px;
+}
+
+.detail-title{
+    font-size:32px;
+
+    letter-spacing:-1px;
+
+    margin-bottom:10px;
+}
+
+.detail-description{
+    color:var(--muted);
+
+    font-size:13px;
+
+    line-height:1.7;
+
+    margin-bottom:20px;
+}
+
+.detail-price{
+    font-size:29px;
+    font-weight:900;
+
+    margin-bottom:20px;
+}
+
+.specs{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:8px;
+
+    margin-bottom:22px;
+}
+
+.spec{
+    padding:11px;
+
+    background:var(--surface-2);
+
+    border-radius:10px;
+
+    font-size:11px;
+}
+
+.spec span{
+    color:var(--muted);
+    display:block;
+    margin-bottom:3px;
+}
+
+.spec strong{
+    font-size:11px;
+}
+
+/* =========================================================
+   CART
+========================================================= */
+
+.cart-list{
+    display:grid;
+    gap:10px;
+
+    margin-bottom:20px;
+}
+
+.cart-item{
+    display:grid;
+
+    grid-template-columns:70px 1fr auto;
+
+    gap:12px;
+
+    align-items:center;
+
+    padding:10px;
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    background:var(--surface-2);
+}
+
+.cart-item-image{
+    width:70px;
+    height:70px;
+
+    overflow:hidden;
+
+    border-radius:10px;
+}
+
+.cart-item-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.cart-item h4{
+    font-size:13px;
+    margin-bottom:5px;
+}
+
+.cart-item p{
+    color:var(--muted);
+    font-size:11px;
+}
+
+.cart-price{
+    font-weight:900;
+    font-size:14px;
+}
+
+.cart-remove{
+    margin-top:7px;
+
+    border:0;
+    background:none;
+
+    color:var(--red);
+
+    font-size:10px;
+}
+
+.cart-total{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding-top:20px;
+
+    border-top:1px solid var(--border);
+
+    font-size:14px;
+}
+
+.cart-total strong{
+    font-size:24px;
+}
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast-container{
+    position:fixed;
+
+    right:20px;
+    bottom:20px;
+
+    z-index:3000;
+
+    display:grid;
+
+    gap:8px;
+
+    width:min(350px,calc(100% - 40px));
+}
+
+.toast{
+    padding:15px 17px;
+
+    border-radius:14px;
+
+    background:#1a1e29;
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+    display:flex;
+
+    gap:12px;
+
+    align-items:flex-start;
+
+    animation:toastIn .3s ease;
+}
+
+@keyframes toastIn{
+    from{
+        opacity:0;
+        transform:translateX(30px);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+.toast-icon{
+    width:30px;
+    height:30px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:9px;
+
+    background:rgba(54,217,139,.12);
+    color:var(--green);
+
+    flex-shrink:0;
+}
+
+.toast strong{
+    display:block;
+    font-size:12px;
+    margin-bottom:3px;
+}
+
+.toast p{
+    color:#858d9e;
+    font-size:11px;
+}
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.empty-state{
+    grid-column:1/-1;
+
+    padding:60px 20px;
+
+    text-align:center;
+
+    border:1px dashed var(--border);
+
+    border-radius:20px;
+
+    background:var(--surface);
+}
+
+.empty-state h3{
+    font-size:20px;
+    margin-bottom:8px;
+}
+
+.empty-state p{
+    color:var(--muted);
+    font-size:13px;
+}
+
+/* =========================================================
+   PAGES / SPA
+========================================================= */
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+.page-top{
+    padding:70px 0 30px;
+}
+
+.page-top h1{
+    font-size:clamp(40px,5vw,65px);
+    letter-spacing:-3px;
+    margin-bottom:15px;
+}
+
+.page-top p{
+    color:var(--muted);
+    max-width:650px;
+    line-height:1.7;
+}
+
+/* =========================================================
+   404
+========================================================= */
+
+.error-page{
+    min-height:65vh;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+}
+
+.error-number{
+    font-size:clamp(100px,20vw,230px);
+
+    line-height:.8;
+
+    font-weight:900;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--purple),
+            var(--blue),
+            var(--orange)
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+
+    letter-spacing:-15px;
+
+    margin-bottom:30px;
+}
+
+/* =========================================================
+   CHECKOUT
+========================================================= */
+
+.checkout-grid{
+    display:grid;
+    grid-template-columns:1fr .65fr;
+    gap:20px;
+}
+
+.checkout-card{
+    padding:25px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+}
+
+.checkout-card h3{
+    font-size:18px;
+    margin-bottom:20px;
+}
+
+.order-summary{
+    display:grid;
+    gap:10px;
+}
+
+.summary-line{
+    display:flex;
+    justify-content:space-between;
+
+    color:var(--muted);
+
+    font-size:12px;
+}
+
+.summary-line.total{
+    color:var(--text);
+
+    padding-top:15px;
+
+    margin-top:5px;
+
+    border-top:1px solid var(--border);
+
+    font-size:16px;
+}
+
+.summary-line.total strong{
+    font-size:24px;
+}
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media(max-width:1050px){
+
+    .nav{
+        display:none;
+    }
+
+    .mobile-menu{
+        display:grid;
+    }
+
+    .hero-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero-visual{
+        min-height:450px;
+    }
+
+    .hero-main-image{
+        min-height:450px;
+    }
+
+    .category-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .products-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .services-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .footer-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media(max-width:700px){
+
+    .container{
+        width:min(100% - 25px,var(--container));
+    }
+
+    .header-inner{
+        height:68px;
+    }
+
+    .logo{
+        font-size:18px;
+    }
+
+    .logo-mark{
+        width:35px;
+        height:35px;
+    }
+
+    .header-actions{
+        gap:5px;
+    }
+
+    .icon-button{
+        width:38px;
+        height:38px;
+    }
+
+    .hero{
+        padding:50px 0 30px;
+    }
+
+    .hero h1{
+        font-size:47px;
+        letter-spacing:-3px;
+    }
+
+    .hero-description{
+        font-size:14px;
+    }
+
+    .hero-visual{
+        min-height:390px;
+        border-radius:23px;
+    }
+
+    .hero-main-image{
+        min-height:390px;
+    }
+
+    .floating-card{
+        display:none;
+    }
+
+    .stats{
+        padding-bottom:45px;
+    }
+
+    .stats-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .stat{
+        padding:18px;
+
+        border-bottom:1px solid var(--border);
+    }
+
+    .stat:nth-child(2){
+        border-right:0;
+    }
+
+    .stat strong{
+        font-size:22px;
+    }
+
+    .section{
+        padding:60px 0;
+    }
+
+    .section-header{
+        display:block;
+    }
+
+    .section-title{
+        font-size:36px;
+    }
+
+    .category-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .category-card{
+        min-height:130px;
+    }
+
+    .catalog-toolbar{
+        display:grid;
+    }
+
+    .search-box{
+        max-width:none;
+    }
+
+    .select-box select{
+        width:100%;
+    }
+
+    .products-grid{
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+    }
+
+    .product-image{
+        height:180px;
+    }
+
+    .product-body{
+        padding:13px;
+    }
+
+    .product-title{
+        font-size:14px;
+    }
+
+    .product-description{
+        display:none;
+    }
+
+    .product-price strong{
+        font-size:16px;
+    }
+
+    .add-cart{
+        width:38px;
+        height:38px;
+    }
+
+    .advantages{
+        grid-template-columns:1fr;
+    }
+
+    .promo-banner{
+        padding:30px 22px;
+        min-height:380px;
+    }
+
+    .promo-content h2{
+        font-size:38px;
+    }
+
+    .about-grid{
+        grid-template-columns:1fr;
+    }
+
+    .about-image{
+        height:400px;
+    }
+
+    .about-list{
+        grid-template-columns:1fr;
+    }
+
+    .services-grid{
+        grid-template-columns:1fr;
+    }
+
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-group.full{
+        grid-column:auto;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+        gap:25px;
+    }
+
+    .footer-brand{
+        grid-column:1/-1;
+    }
+
+    .footer-bottom{
+        display:block;
+        line-height:1.8;
+    }
+
+    .product-detail{
+        grid-template-columns:1fr;
+    }
+
+    .product-detail-image{
+        height:300px;
+    }
+
+    .detail-title{
+        font-size:27px;
+    }
+
+    .checkout-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+/* =========================================================
+   VERY SMALL
+========================================================= */
+
+@media(max-width:420px){
+
+    .products-grid{
+        grid-template-columns:1fr;
+    }
+
+    .product-image{
+        height:240px;
+    }
+
+    .category-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-brand{
+        grid-column:auto;
+    }
+
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(20px);
+
+    transition:
+        opacity .6s ease,
+        transform .6s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:none;
+}
+
+/* =========================================================
+   MOBILE NAV PANEL
+========================================================= */
+
+.mobile-panel{
+    position:fixed;
+
+    top:68px;
+    left:12px;
+    right:12px;
+
+    z-index:999;
+
+    padding:10px;
+
+    background:#151821;
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    display:none;
+
+    box-shadow:var(--shadow);
+}
+
+.mobile-panel.show{
+    display:block;
+}
+
+.mobile-panel a{
+    display:block;
+
+    padding:14px;
+
+    color:#b6bdcc;
+
+    border-radius:10px;
+
+    font-size:14px;
+}
+
+.mobile-panel a:hover{
+    background:var(--surface-2);
+    color:#fff;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ======================================================
+     HEADER
+====================================================== -->
+
+<header class="header">
+
+<div class="container header-inner">
+
+<a href="#home" class="logo" data-page="home">
+
+    <div class="logo-mark">
+        <span></span>
+    </div>
+
+    <span>NEXORA</span>
+
+</a>
+
+<nav class="nav">
+
+<a href="#home" data-page="home">Главная</a>
+<a href="#catalog" data-page="catalog">Каталог</a>
+<a href="#services" data-page="services">Сервисы</a>
+<a href="#about" data-page="about">О компании</a>
+<a href="#contact" data-page="contact">Контакты</a>
+
+</nav>
+
+<div class="header-actions">
+
+<button
+class="icon-button mobile-menu"
+id="mobileMenuButton"
+aria-label="Открыть меню"
+>
+
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M4 6h16M4 12h16M4 18h16"/>
+</svg>
+
+</button>
+
+<button
+class="icon-button"
+id="themeButton"
+aria-label="Сменить тему"
+>
+
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+<circle cx="12" cy="12" r="4"/>
+<path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/>
+</svg>
+
+</button>
+
+<button
+class="icon-button"
+id="favoriteButton"
+aria-label="Избранное"
+>
+
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+<path d="M20.8 8.7c0 5.5-8.8 11-8.8 11S3.2 14.2 3.2 8.7A4.7 4.7 0 0 1 12 6.2a4.7 4.7 0 0 1 8.8 2.5Z"/>
+</svg>
+
+<span class="counter" id="favoriteCounter">0</span>
+
+</button>
+
+<button
+class="icon-button"
+id="cartButton"
+aria-label="Корзина"
+>
+
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+<path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.4L21 8H6"/>
+<circle cx="10" cy="20" r="1"/>
+<circle cx="18" cy="20" r="1"/>
+</svg>
+
+<span class="counter" id="cartCounter">0</span>
+
+</button>
+
+</div>
+
+</div>
+
+</header>
+
+<div class="mobile-panel" id="mobilePanel">
+
+<a href="#home" data-page="home">Главная</a>
+<a href="#catalog" data-page="catalog">Каталог</a>
+<a href="#services" data-page="services">Сервисы</a>
+<a href="#about" data-page="about">О компании</a>
+<a href="#contact" data-page="contact">Контакты</a>
+
+</div>
+
+
+<!-- ======================================================
+     HOME
+====================================================== -->
+
+<main>
+
+<section
+class="page active"
+id="page-home"
+>
+
+<div class="hero">
+
+<div class="container hero-grid">
+
+<div class="hero-content reveal">
+
+<div class="hero-label">
+<i></i>
+Техника нового поколения
+</div>
+
+<h1>
+Всё необходимое.
+<br>
+<span>В одном месте.</span>
+</h1>
+
+<p class="hero-description">
+NEXORA — современный магазин электроники,
+где смартфоны, компьютеры, игровые устройства,
+аудиотехника и аксессуары собраны в одном каталоге.
+Выбирайте технику онлайн, а мы доставим её прямо к вам.
+</p>
+
+<div class="hero-buttons">
+
+<button
+class="btn btn-primary"
+data-page="catalog"
+>
+Перейти в каталог
+
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M5 12h14"/>
+<path d="m13 6 6 6-6 6"/>
+</svg>
+
+</button>
+
+<button
+class="btn btn-secondary"
+data-page="about"
+>
+О компании
+</button>
+
+</div>
+
+</div>
+
+
+<div class="hero-visual reveal">
+
+<img
+class="hero-main-image"
+src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=85"
+alt="Современный смартфон"
+onerror="this.src='https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=1200&q=85'"
+>
+
+<div class="hero-overlay"></div>
+
+<div class="floating-card floating-one">
+
+<strong>24/7</strong>
+<span>Онлайн-заказ</span>
+
+</div>
+
+<div class="floating-card floating-two">
+
+<strong>от 1 дня</strong>
+<span>Доставка</span>
+
+</div>
+
+<div class="hero-product-card">
+
+<div class="hero-product-top">
+
+<strong>Новая коллекция</strong>
+
+<span class="hero-price">
+от 89 990 ₸
+</span>
+
+</div>
+
+<p>
+Смартфоны, ноутбуки и аксессуары
+от популярных производителей.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+<div class="container">
+
+<div class="stats-grid reveal">
+
+<div class="stat">
+
+<strong>4 500+</strong>
+<span>товаров в каталоге</span>
+
+</div>
+
+<div class="stat">
+
+<strong>98%</strong>
+<span>положительных отзывов</span>
+
+</div>
+
+<div class="stat">
+
+<strong>24 ч</strong>
+<span>средняя обработка заказа</span>
+
+</div>
+
+<div class="stat">
+
+<strong>7 дней</strong>
+<span>на обмен товара</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- CATEGORIES -->
+
+<section class="section">
+
+<div class="container">
+
+<div class="section-header">
+
+<div>
+
+<div class="section-kicker">
+Категории
+</div>
+
+<h2 class="section-title">
+Выберите направление
+</h2>
+
+<p class="section-description">
+От повседневных аксессуаров до мощных
+рабочих станций и игровых устройств.
+</p>
+
+</div>
+
+<button
+class="btn btn-secondary"
+data-page="catalog"
+>
+Все товары
+</button>
+
+</div>
+
+
+<div class="category-grid">
+
+<div class="category-card" data-category="Смартфоны">
+
+<img
+src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80"
+alt="Смартфоны"
+>
+
+<div class="category-info">
+
+<strong>Смартфоны</strong>
+<span>240 товаров</span>
+
+</div>
+
+</div>
+
+
+<div class="category-card" data-category="Ноутбуки">
+
+<img
+src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=600&q=80"
+alt="Ноутбуки"
+>
+
+<div class="category-info">
+
+<strong>Ноутбуки</strong>
+<span>185 товаров</span>
+
+</div>
+
+</div>
+
+
+<div class="category-card" data-category="Аудио">
+
+<img
+src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80"
+alt="Наушники"
+>
+
+<div class="category-info">
+
+<strong>Аудио</strong>
+<span>320 товаров</span>
+
+</div>
+
+</div>
+
+
+<div class="category-card" data-category="Игры">
+
+<img
+src="https://images.unsplash.com/photo-1605901309584-818e25960a8f?auto=format&fit=crop&w=600&q=80"
+alt="Игровые устройства"
+>
+
+<div class="category-info">
+
+<strong>Игры</strong>
+<span>410 товаров</span>
+
+</div>
+
+</div>
+
+
+<div class="category-card" data-category="Часы">
+
+<img
+src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80"
+alt="Умные часы"
+>
+
+<div class="category-info">
+
+<strong>Умные часы</strong>
+<span>140 товаров</span>
+
+</div>
+
+</div>
+
+
+<div class="category-card" data-category="Аксессуары">
+
+<img
+src="https://images.unsplash.com/photo-1609592424370-61c9c43a5e9e?auto=format&fit=crop&w=600&q=80"
+alt="Аксессуары"
+>
+
+<div class="category-info">
+
+<strong>Аксессуары</strong>
+<span>720 товаров</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ADVANTAGES -->
+
+<section class="section">
+
+<div class="container">
+
+<div class="section-header">
+
+<div>
+
+<div class="section-kicker">
+Почему NEXORA
+</div>
+
+<h2 class="section-title">
+Больше, чем магазин
+</h2>
+
+</div>
+
+</div>
+
+
+<div class="advantages">
+
+<div class="advantage reveal">
+
+<div class="advantage-icon purple">
+
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+<path d="M12 3v18M3 12h18"/>
+<circle cx="12" cy="12" r="9"/>
+</svg>
+
+</div>
+
+<h3>Большой выбор</h3>
+
+<p>
+Тысячи моделей техники и аксессуаров
+для учёбы, работы, отдыха и развлечений.
+</p>
+
+</div>
+
+
+<div class="advantage reveal">
+
+<div class="advantage-icon blue">
+
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+<rect x="3" y="5" width="18" height="14" rx="2"/>
+<path d="M7 9h10M7 13h6"/>
+</svg>
+
+</div>
+
+<h3>Удобная оплата</h3>
+
+<p>
+Оплата онлайн, картой при получении
+или другими доступными способами.
+</p>
+
+</div>
+
+
+<div class="advantage reveal">
+
+<div class="advantage-icon green">
+
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+<path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z"/>
+<circle cx="7" cy="19" r="2"/>
+<circle cx="18" cy="19" r="2"/>
+</svg>
+
+</div>
+
+<h3>Быстрая доставка</h3>
+
+<p>
+Передаём заказ в службу доставки сразу
+после подтверждения покупки.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PROMO -->
+
+<section class="section">
+
+<div class="container">
+
+<div class="promo-banner reveal">
+
+<div class="promo-content">
+
+<small>Специальное предложение</small>
+
+<h2>
+Скидка 15%
+<br>
+на первую покупку
+</h2>
+
+<p>
+Зарегистрируйтесь на сайте и получите
+скидку на первый заказ.
+</p>
+
+<div class="promo-code">
+NEXORA15
+</div>
+
+<br>
+
+<button
+class="btn btn-primary"
+onclick="copyPromo()"
+>
+Скопировать код
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</section>
+
+
+<!-- ======================================================
+     CATALOG PAGE
+====================================================== -->
+
+<section
+class="page"
+id="page-catalog"
+>
+
+<div class="page-top">
+
+<div class="container">
+
+<div class="section-kicker">
+Каталог
+</div>
+
+<h1>
+Техника для любых задач
+</h1>
+
+<p>
+Используйте поиск и фильтр, чтобы быстро
+найти подходящий товар.
+</p>
+
+</div>
+
+</div>
+
+
+<section class="section catalog-section">
+
+<div class="container">
+
+<div class="catalog-toolbar">
+
+<div class="search-box">
+
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<circle cx="11" cy="11" r="7"/>
+<path d="m20 20-4-4"/>
+</svg>
+
+<input
+type="search"
+id="searchInput"
+placeholder="Поиск товара..."
+aria-label="Поиск товара"
+>
+
+</div>
+
+
+<div class="select-box">
+
+<select id="categoryFilter">
+
+<option value="all">
+Все категории
+</option>
+
+<option value="Смартфоны">
+Смартфоны
+</option>
+
+<option value="Ноутбуки">
+Ноутбуки
+</option>
+
+<option value="Аудио">
+Аудио
+</option>
+
+<option value="Игры">
+Игровые устройства
+</option>
+
+<option value="Часы">
+Умные часы
+</option>
+
+<option value="Аксессуары">
+Аксессуары
+</option>
+
+</select>
+
+<div class="select-arrow">
+
+<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="m6 9 6 6 6-6"/>
+</svg>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div
+class="products-grid"
+id="productsGrid"
+></div>
+
+</div>
+
+</section>
+
+</section>
+
+
+<!-- ======================================================
+     SERVICES PAGE
+====================================================== -->
+
+<section
+class="page"
+id="page-services"
+>
+
+<div class="page-top">
+
+<div class="container">
+
+<div class="section-kicker">
+Сервисы
+</div>
+
+<h1>
+Мы помогаем после покупки
+</h1>
+
+<p>
+NEXORA — это не только продажа техники.
+Мы сопровождаем клиента от выбора товара
+до его дальнейшего использования.
+</p>
+
+</div>
+
+</div>
+
+
+<section class="section">
+
+<div class="container">
+
+<div class="services-grid">
+
+<div class="service reveal">
+
+<div class="service-number">
+01
+</div>
+
+<div class="service-icon">
+
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+<circle cx="12" cy="12" r="8"/>
+<path d="M12 8v4l3 2"/>
+</svg>
+
+</div>
+
+<h3>
+Консультация
+</h3>
+
+<p>
+Поможем сравнить характеристики,
+выбрать подходящую модель и не переплачивать
+за ненужные функции.
+</p>
+
+</div>
+
+
+<div class="service reveal">
+
+<div class="service-number">
+02
+</div>
+
+<div class="service-icon">
+
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+<path d="M3 6h18M6 3v3M18 3v3"/>
+<rect x="4" y="5" width="16" height="16" rx="2"/>
+</svg>
+
+</div>
+
+<h3>
+Доставка
+</h3>
+
+<p>
+Организуем доставку по городу
+и отправку в другие регионы.
+Статус заказа можно уточнить у менеджера.
+</p>
+
+</div>
+
+
+<div class="service reveal">
+
+<div class="service-number">
+03
+</div>
+
+<div class="service-icon">
+
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+<path d="M12 3v18M5 8h8a3 3 0 0 0 0-6H7a3 3 0 0 0 0 6h5a3 3 0 0 1 0 6H6"/>
+</svg>
+
+</div>
+
+<h3>
+Гарантия
+</h3>
+
+<p>
+На технику распространяется гарантия
+в соответствии с условиями производителя
+и магазина.
+</p>
+
+</div>
+
+
+<div class="service reveal">
+
+<div class="service-number">
+04
+</div>
+
+<div class="service-icon">
+
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+<path d="M4 7h16v13H4z"/>
+<path d="M8 7V5a4 4 0 0 1 8 0v2"/>
+</svg>
+
+</div>
+
+<h3>
+Самовывоз
+</h3>
+
+<p>
+Если заказ нужен срочно, его можно
+забрать самостоятельно после подтверждения
+готовности.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="container">
+
+<div class="section-header">
+
+<div>
+
+<div class="section-kicker">
+Ответы
+</div>
+
+<h2 class="section-title">
+Частые вопросы
+</h2>
+
+</div>
+
+</div>
+
+
+<div class="faq-list">
+
+<div class="faq">
+
+<button class="faq-question">
+
+<span>
+Как оформить заказ?
+</span>
+
+<span>+</span>
+
+</button>
+
+<div class="faq-answer">
+
+<p>
+Выберите товар, добавьте его в корзину,
+затем перейдите к оформлению и заполните
+контактные данные.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="faq">
+
+<button class="faq-question">
+
+<span>
+Есть ли доставка?
+</span>
+
+<span>+</span>
+
+</button>
+
+<div class="faq-answer">
+
+<p>
+Да. Доставка доступна по городу,
+а также возможна отправка в другие регионы.
+Точная стоимость рассчитывается при оформлении.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="faq">
+
+<button class="faq-question">
+
+<span>
+Можно ли вернуть товар?
+</span>
+
+<span>+</span>
+
+</button>
+
+<div class="faq-answer">
+
+<p>
+Вопросы обмена и возврата рассматриваются
+в соответствии с законодательством и условиями
+продавца.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="faq">
+
+<button class="faq-question">
+
+<span>
+Можно ли получить консультацию?
+</span>
+
+<span>+</span>
+
+</button>
+
+<div class="faq-answer">
+
+<p>
+Да. Напишите нам через форму обратной связи,
+и специалист поможет подобрать технику.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</section>
+
+
+<!-- ======================================================
+     ABOUT PAGE
+====================================================== -->
+
+<section
+class="page"
+id="page-about"
+>
+
+<div class="page-top">
+
+<div class="container">
+
+<div class="section-kicker">
+О компании
+</div>
+
+<h1>
+Технологии должны быть понятными
+</h1>
+
+<p>
+Мы создаём удобный способ покупать
+современную технику без лишних сложностей.
+</p>
+
+</div>
+
+</div>
+
+
+<section class="section">
+
+<div class="container about-grid">
+
+<div class="about-image reveal">
+
+<img
+src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1000&q=85"
+alt="Современная электроника"
+>
+
+<div class="about-image-label">
+
+<strong>2026</strong>
+<span>новый этап NEXORA</span>
+
+</div>
+
+</div>
+
+
+<div class="about-content reveal">
+
+<div class="section-kicker">
+Наша идея
+</div>
+
+<h2 class="section-title">
+Меньше сложностей.
+Больше технологий.
+</h2>
+
+<p>
+NEXORA создана как современная площадка,
+где человек может подобрать электронику
+для работы, учёбы, творчества, общения
+и развлечений.
+</p>
+
+<p>
+Мы стараемся показывать характеристики
+понятно, сравнивать товары честно и делать
+процесс покупки максимально простым.
+</p>
+
+
+<ul class="about-list">
+
+<li>
+
+<span class="check">
+<svg width="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+<path d="m5 12 4 4L19 6"/>
+</svg>
+</span>
+
+Актуальный каталог
+
+</li>
+
+<li>
+
+<span class="check">
+<svg width="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+<path d="m5 12 4 4L19 6"/>
+</svg>
+</span>
+
+Понятные характеристики
+
+</li>
+
+<li>
+
+<span class="check">
+<svg width="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+<path d="m5 12 4 4L19 6"/>
+</svg>
+</span>
+
+Поддержка клиентов
+
+</li>
+
+<li>
+
+<span class="check">
+<svg width="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+<path d="m5 12 4 4L19 6"/>
+</svg>
+</span>
+
+Удобная доставка
+
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+</section>
+
+
+<!-- ======================================================
+     CONTACT PAGE
+====================================================== -->
+
+<section
+class="page"
+id="page-contact"
+>
+
+<div class="page-top">
+
+<div class="container">
+
+<div class="section-kicker">
+Контакты
+</div>
+
+<h1>
+Свяжитесь с нами
+</h1>
+
+<p>
+Есть вопрос по товару, заказу или доставке?
+Оставьте сообщение — менеджер свяжется с вами.
+</p>
+
+</div>
+
+</div>
+
+
+<section class="section">
+
+<div class="container contact-grid">
+
+<div class="contact-card">
+
+<h3>
+Контактная информация
+</h3>
+
+<p>
+Работаем ежедневно и стараемся отвечать
+на обращения максимально быстро.
+</p>
+
+
+<div class="contact-items">
+
+<div class="contact-item">
+
+<div class="contact-item-icon">
+
+<svg width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.2-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7A2 2 0 0 1 22 16.9Z"/>
+</svg>
+
+</div>
+
+<div>
+
+<strong>Телефон</strong>
+<span>+7 700 000 00 00</span>
+
+</div>
+
+</div>
+
+
+<div class="contact-item">
+
+<div class="contact-item-icon">
+
+<svg width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+<rect x="3" y="5" width="18" height="14" rx="2"/>
+<path d="m3 7 9 6 9-6"/>
+</svg>
+
+</div>
+
+<div>
+
+<strong>Email</strong>
+<span>hello@nexora.kz</span>
+
+</div>
+
+</div>
+
+
+<div class="contact-item">
+
+<div class="contact-item-icon">
+
+<svg width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+<path d="M12 21s7-5.2 7-12a7 7 0 1 0-14 0c0 6.8 7 12 7 12Z"/>
+<circle cx="12" cy="9" r="2.5"/>
+</svg>
+
+</div>
+
+<div>
+
+<strong>Адрес</strong>
+<span>Алматы, Казахстан</span>
+
+</div>
+
+</div>
+
+
+<div class="contact-item">
+
+<div class="contact-item-icon">
+
+<svg width="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+<circle cx="12" cy="12" r="9"/>
+<path d="M12 7v5l3 2"/>
+</svg>
+
+</div>
+
+<div>
+
+<strong>График</strong>
+<span>Ежедневно, 09:00–21:00</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="contact-card">
+
+<h3>
+Напишите нам
+</h3>
+
+<form id="contactForm" novalidate>
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label for="name">
+Имя и фамилия
+</label>
+
+<input
+id="name"
+name="name"
+type="text"
+placeholder="Введите имя"
+required
+minlength="2"
+>
+
+<div
+class="error-text"
+id="nameError"
+></div>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="email">
+Email
+</label>
+
+<input
+id="email"
+name="email"
+type="email"
+placeholder="example@mail.com"
+required
+>
+
+<div
+class="error-text"
+id="emailError"
+></div>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="phone">
+Телефон
+</label>
+
+<input
+id="phone"
+name="phone"
+type="tel"
+placeholder="+7 700 000 00 00"
+required
+pattern="^\+?[0-9\s\-()]{10,20}$"
+>
+
+<div
+class="error-text"
+id="phoneError"
+></div>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="topic">
+Тема обращения
+</label>
+
+<select
+id="topic"
+name="topic"
+required
+>
+
+<option value="">
+Выберите тему
+</option>
+
+<option>
+Вопрос по товару
+</option>
+
+<option>
+Доставка
+</option>
+
+<option>
+Гарантия
+</option>
+
+<option>
+Возврат
+</option>
+
+<option>
+Другое
+</option>
+
+</select>
+
+<div
+class="error-text"
+id="topicError"
+></div>
+
+</div>
+
+
+<div class="form-group full">
+
+<label for="message">
+Сообщение
+</label>
+
+<textarea
+id="message"
+name="message"
+placeholder="Напишите ваш вопрос..."
+required
+minlength="10"
+></textarea>
+
+<div
+class="error-text"
+id="messageError"
+></div>
+
+</div>
+
+</div>
+
+
+<button
+class="btn btn-primary"
+type="submit"
+style="margin-top:15px"
+>
+Отправить сообщение
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+</section>
+
+
+<!-- ======================================================
+     404 PAGE
+====================================================== -->
+
+<section
+class="page"
+id="page-404"
+>
+
+<div class="error-page">
+
+<div>
+
+<div class="error-number">
+404
+</div>
+
+<h1>
+Страница не найдена
+</h1>
+
+<p style="
+color:var(--muted);
+margin:15px auto 25px;
+max-width:500px;
+line-height:1.7;
+">
+Похоже, такой страницы не существует
+или ссылка была изменена.
+</p>
+
+<button
+class="btn btn-primary"
+data-page="home"
+>
+Вернуться на главную
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ======================================================
+     CHECKOUT PAGE
+====================================================== -->
+
+<section
+class="page"
+id="page-checkout"
+>
+
+<div class="page-top">
+
+<div class="container">
+
+<div class="section-kicker">
+Оформление
+</div>
+
+<h1>
+Оформить заказ
+</h1>
+
+<p>
+Заполните данные, чтобы мы могли связаться
+с вами и подтвердить заказ.
+</p>
+
+</div>
+
+</div>
+
+
+<section class="section">
+
+<div class="container checkout-grid">
+
+<div class="checkout-card">
+
+<h3>
+Данные получателя
+</h3>
+
+<form id="checkoutForm" novalidate>
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label for="checkoutName">
+Имя и фамилия
+</label>
+
+<input
+id="checkoutName"
+type="text"
+required
+placeholder="Ваше имя"
+>
+
+<div class="error-text" id="checkoutNameError"></div>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="checkoutPhone">
+Телефон
+</label>
+
+<input
+id="checkoutPhone"
+type="tel"
+required
+placeholder="+7 700 000 00 00"
+>
+
+<div class="error-text" id="checkoutPhoneError"></div>
+
+</div>
+
+
+<div class="form-group full">
+
+<label for="checkoutAddress">
+Адрес доставки
+</label>
+
+<input
+id="checkoutAddress"
+type="text"
+required
+placeholder="Город, улица, дом, квартира"
+>
+
+<div class="error-text" id="checkoutAddressError"></div>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="payment">
+Способ оплаты
+</label>
+
+<select id="payment" required>
+
+<option value="">
+Выберите
+</option>
+
+<option>
+Банковская карта
+</option>
+
+<option>
+Оплата при получении
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="delivery">
+Доставка
+</label>
+
+<select id="delivery" required>
+
+<option value="">
+Выберите
+</option>
+
+<option>
+Курьер
+</option>
+
+<option>
+Самовывоз
+</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+<button
+class="btn btn-primary"
+type="submit"
+style="margin-top:18px"
+>
+Подтвердить заказ
+</button>
+
+</form>
+
+</div>
+
+
+<div class="checkout-card">
+
+<h3>
+Ваш заказ
+</h3>
+
+<div
+class="order-summary"
+id="checkoutSummary"
+></div>
+
+</div>
+
+</div>
+
+</section>
+
+</section>
+
+</main>
+
+
+<!-- ======================================================
+     FOOTER
+====================================================== -->
+
+<footer class="footer">
+
+<div class="container">
+
+<div class="footer-grid">
+
+<div class="footer-brand">
+
+<a href="#home" class="logo">
+
+<div class="logo-mark">
+<span></span>
+</div>
+
+NEXORA
+
+</a>
+
+<p>
+Современный интернет-магазин электроники.
+Техника для работы, учёбы, творчества,
+игр и повседневной жизни.
+</p>
+
+<button
+class="btn btn-secondary"
+data-page="catalog"
+>
+Открыть каталог
+</button>
+
+</div>
+
+
+<div>
+
+<h4>
+Каталог
+</h4>
+
+<ul>
+
+<li>
+<a href="#catalog" data-page="catalog">
+Смартфоны
+</a>
+</li>
+
+<li>
+<a href="#catalog" data-page="catalog">
+Ноутбуки
+</a>
+</li>
+
+<li>
+<a href="#catalog" data-page="catalog">
+Аудио
+</a>
+</li>
+
+<li>
+<a href="#catalog" data-page="catalog">
+Игровые устройства
+</a>
+</li>
+
+</ul>
+
+</div>
+
+
+<div>
+
+<h4>
+Компания
+</h4>
+
+<ul>
+
+<li>
+<a href="#about" data-page="about">
+О компании
+</a>
+</li>
+
+<li>
+<a href="#services" data-page="services">
+Сервисы
+</a>
+</li>
+
+<li>
+<a href="#contact" data-page="contact">
+Контакты
+</a>
+</li>
+
+<li>
+<a href="#services" data-page="services">
+FAQ
+</a>
+</li>
+
+</ul>
+
+</div>
+
+
+<div>
+
+<h4>
+Помощь
+</h4>
+
+<ul>
+
+<li>
+<a href="#contact" data-page="contact">
+Обратная связь
+</a>
+</li>
+
+<li>
+<a href="#services" data-page="services">
+Доставка
+</a>
+</li>
+
+<li>
+<a href="#services" data-page="services">
+Гарантия
+</a>
+</li>
+
+<li>
+<a href="#services" data-page="services">
+Возврат
+</a>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+<div class="footer-bottom">
+
+<span>
+© 2026 NEXORA. Все права защищены.
+</span>
+
+<span>
+Интернет-магазин электроники
+</span>
+
+</div>
+
+</div>
+
+</footer>
+
+
+<!-- ======================================================
+     PRODUCT MODAL
+====================================================== -->
+
+<div
+class="modal"
+id="productModal"
+>
+
+<div class="modal-box">
+
+<div class="modal-header">
+
+<h3>
+Информация о товаре
+</h3>
+
+<button
+class="modal-close"
+onclick="closeModal('productModal')"
+aria-label="Закрыть"
+>
+×
+</button>
+
+</div>
+
+<div
+class="modal-content"
+id="productModalContent"
+></div>
+
+</div>
+
+</div>
+
+
+<!-- ======================================================
+     CART MODAL
+====================================================== -->
+
+<div
+class="modal"
+id="cartModal"
+>
+
+<div class="modal-box">
+
+<div class="modal-header">
+
+<h3>
+Корзина
+</h3>
+
+<button
+class="modal-close"
+onclick="closeModal('cartModal')"
+aria-label="Закрыть"
+>
+×
+</button>
+
+</div>
+
+<div class="modal-content">
+
+<div
+class="cart-list"
+id="cartList"
+></div>
+
+<div class="cart-total">
+
+<div>
+Итого
+</div>
+
+<strong id="cartTotal">
+0 ₸
+</strong>
+
+</div>
+
+<button
+class="btn btn-primary"
+id="checkoutButton"
+style="width:100%;margin-top:20px"
+>
+Перейти к оформлению
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div
+class="toast-container"
+id="toastContainer"
+></div>
+
+
+<script>
+
+/* =========================================================
+   NEXORA JAVASCRIPT
+========================================================= */
+
+
+/* =========================================================
+   PRODUCTS DATABASE
+========================================================= */
+
+const products = [
+
+{
+id:1,
+name:"Nova X Pro",
+category:"Смартфоны",
+price:289990,
+oldPrice:319990,
+rating:4.9,
+reviews:184,
+badge:"Хит",
+description:"Флагманский смартфон с ярким дисплеем, мощным процессором и камерой высокого разрешения.",
+image:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=85",
+specs:{
+"Экран":"6.7 OLED",
+"Память":"256 ГБ",
+"Камера":"50 Мп",
+"Батарея":"5000 мАч"
+}
+},
+
+{
+id:2,
+name:"Pixel Core 14",
+category:"Смартфоны",
+price:199990,
+oldPrice:219990,
+rating:4.8,
+reviews:122,
+badge:"Новинка",
+description:"Универсальный смартфон для общения, фото, видео и ежедневных задач.",
+image:"https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=900&q=85",
+specs:{
+"Экран":"6.5 AMOLED",
+"Память":"128 ГБ",
+"Камера":"48 Мп",
+"Батарея":"4700 мАч"
+}
+},
+
+{
+id:3,
+name:"VisionBook 15",
+category:"Ноутбуки",
+price:429990,
+oldPrice:459990,
+rating:4.9,
+reviews:96,
+badge:"Топ",
+description:"Ноутбук для учёбы, программирования, дизайна и офисной работы.",
+image:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=900&q=85",
+specs:{
+"Экран":"15.6 IPS",
+"ОЗУ":"16 ГБ",
+"SSD":"512 ГБ",
+"Процессор":"Core i5"
+}
+},
+
+{
+id:4,
+name:"Creator Pro 16",
+category:"Ноутбуки",
+price:689990,
+oldPrice:729990,
+rating:4.8,
+reviews:74,
+badge:"Pro",
+description:"Мощная рабочая станция для графики, монтажа, 3D и профессиональных задач.",
+image:"https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=900&q=85",
+specs:{
+"Экран":"16 QHD",
+"ОЗУ":"32 ГБ",
+"SSD":"1 ТБ",
+"Видео":"RTX"
+}
+},
+
+{
+id:5,
+name:"AeroSound Max",
+category:"Аудио",
+price:89990,
+oldPrice:109990,
+rating:4.7,
+reviews:245,
+badge:"Скидка",
+description:"Беспроводные наушники с активным шумоподавлением и длительной автономностью.",
+image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=85",
+specs:{
+"Тип":"Over-Ear",
+"Связь":"Bluetooth",
+"ANC":"Да",
+"Автономность":"40 часов"
+}
+},
+
+{
+id:6,
+name:"Studio Pods",
+category:"Аудио",
+price:59990,
+oldPrice:69990,
+rating:4.6,
+reviews:189,
+badge:"",
+description:"Компактные беспроводные наушники для музыки, звонков и поездок.",
+image:"https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=900&q=85",
+specs:{
+"Тип":"TWS",
+"Связь":"Bluetooth",
+"Микрофон":"Да",
+"Заряд":"24 часа"
+}
+},
+
+{
+id:7,
+name:"GameStation X",
+category:"Игры",
+price:379990,
+oldPrice:409990,
+rating:4.9,
+reviews:311,
+badge:"Хит",
+description:"Игровая система нового поколения для современных игр и мультимедиа.",
+image:"https://images.unsplash.com/photo-1605901309584-818e25960a8f?auto=format&fit=crop&w=900&q=85",
+specs:{
+"Формат":"Console",
+"Память":"1 ТБ",
+"Видео":"4K",
+"Подключение":"Wi-Fi"
+}
+},
+
+{
+id:8,
+name:"Pro Controller",
+category:"Игры",
+price:49990,
+oldPrice:54990,
+rating:4.7,
+reviews:88,
+badge:"",
+description:"Эргономичный игровой контроллер с точными стиками и дополнительными кнопками.",
+image:"https://images.unsplash.com/photo-1592840496694-26c035b52bca?auto=format&fit=crop&w=900&q=85",
+specs:{
+"Подключение":"Wireless",
+"Вибрация":"Да",
+"Батарея":"20 часов",
+"Платформа":"PC/Console"
+}
+},
+
+{
+id:9,
+name:"Time One",
+category:"Часы",
+price:119990,
+oldPrice:139990,
+rating:4.8,
+reviews:140,
+badge:"Новинка",
+description:"Умные часы с большим дисплеем, мониторингом активности и уведомлениями.",
+image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=85",
+specs:{
+"Экран":"AMOLED",
+"Связь":"Bluetooth",
+"Защита":"5 ATM",
+"Батарея":"7 дней"
+}
+},
+
+{
+id:10,
+name:"Fit Watch S",
+category:"Часы",
+price:69990,
+oldPrice:79990,
+rating:4.5,
+reviews:74,
+badge:"",
+description:"Лёгкие умные часы для спорта, активности и контроля повседневных показателей.",
+image:"https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=900&q=85",
+specs:{
+"Экран":"1.6 AMOLED",
+"Режимы":"100+",
+"Защита":"IP68",
+"Батарея":"10 дней"
+}
+},
+
+{
+id:11,
+name:"Power Station 65",
+category:"Аксессуары",
+price:24990,
+oldPrice:29990,
+rating:4.8,
+reviews:231,
+badge:"Хит",
+description:"Компактное зарядное устройство с несколькими портами для техники.",
+image:"https://images.unsplash.com/photo-1609592424370-61c9c43a5e9e?auto=format&fit=crop&w=900&q=85",
+specs:{
+"Мощность":"65 Вт",
+"Порты":"USB-C",
+"Количество":"3",
+"Защита":"8 уровней"
+}
+},
+
+{
+id:12,
+name:"Travel Pack",
+category:"Аксессуары",
+price:18990,
+oldPrice:21990,
+rating:4.6,
+reviews:92,
+badge:"",
+description:"Комплект полезных аксессуаров для поездок, работы и повседневного использования.",
+image:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=900&q=85",
+specs:{
+"Материал":"Nylon",
+"Отделения":"12",
+"Формат":"Travel",
+"Вес":"0.6 кг"
+}
+},
+
+{
+id:13,
+name:"Mechanical Pro",
+category:"Аксессуары",
+price:44990,
+oldPrice:49990,
+rating:4.9,
+reviews:115,
+badge:"Топ",
+description:"Механическая клавиатура для игр, программирования и ежедневной работы.",
+image:"https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=900&q=85",
+specs:{
+"Тип":"Mechanical",
+"Подсветка":"RGB",
+"Формат":"87 клавиш",
+"Связь":"USB-C"
+}
+},
+
+{
+id:14,
+name:"Vision Monitor 27",
+category:"Аксессуары",
+price:159990,
+oldPrice:179990,
+rating:4.8,
+reviews:65,
+badge:"Новинка",
+description:"Большой монитор для работы, дизайна, игр и мультимедиа.",
+image:"https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=900&q=85",
+specs:{
+"Диагональ":"27",
+"Разрешение":"2K",
+"Частота":"165 Гц",
+"Тип":"IPS"
+}
+},
+
+{
+id:15,
+name:"AirBook Mini",
+category:"Ноутбуки",
+price:349990,
+oldPrice:379990,
+rating:4.7,
+reviews:108,
+badge:"",
+description:"Тонкий и лёгкий ноутбук для работы, учёбы и путешествий.",
+image:"https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=85",
+specs:{
+"Экран":"14 IPS",
+"ОЗУ":"16 ГБ",
+"SSD":"512 ГБ",
+"Вес":"1.3 кг"
+}
+},
+
+{
+id:16,
+name:"Smart Hub",
+category:"Аксессуары",
+price:32990,
+oldPrice:37990,
+rating:4.5,
+reviews:57,
+badge:"",
+description:"Компактный универсальный хаб для подключения дополнительных устройств.",
+image:"https://images.unsplash.com/photo-1625842268584-8f3296236761?auto=format&fit=crop&w=900&q=85",
+specs:{
+"Порты":"8",
+"Интерфейс":"USB-C",
+"Видео":"4K",
+"Материал":"Aluminium"
+}
+}
+
+];
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let cart =
+JSON.parse(localStorage.getItem("nexoraCart")) || [];
+
+let favorites =
+JSON.parse(localStorage.getItem("nexoraFavorites")) || [];
+
+let currentFilter = "all";
+let currentSearch = "";
+
+
+/* =========================================================
+   LOCAL STORAGE
+========================================================= */
+
+function saveState(){
+
+    localStorage.setItem(
+        "nexoraCart",
+        JSON.stringify(cart)
+    );
+
+    localStorage.setItem(
+        "nexoraFavorites",
+        JSON.stringify(favorites)
+    );
+
+    updateCounters();
+}
+
+
+/* =========================================================
+   FORMAT PRICE
+========================================================= */
+
+function formatPrice(number){
+
+    return new Intl.NumberFormat(
+        "ru-RU"
+    ).format(number) + " ₸";
+
+}
+
+
+/* =========================================================
+   UPDATE COUNTERS
+========================================================= */
+
+function updateCounters(){
+
+    const cartCount =
+        cart.reduce(
+            (sum,item)=>sum+item.quantity,
+            0
+        );
+
+    document.getElementById(
+        "cartCounter"
+    ).textContent = cartCount;
+
+    document.getElementById(
+        "favoriteCounter"
+    ).textContent = favorites.length;
+
+}
+
+
+/* =========================================================
+   RENDER PRODUCTS
+========================================================= */
+
+function renderProducts(){
+
+    const grid =
+        document.getElementById("productsGrid");
+
+    if(!grid) return;
+
+    let filtered =
+        products.filter(product=>{
+
+            const categoryMatch =
+                currentFilter === "all" ||
+                product.category === currentFilter;
+
+            const searchMatch =
+                product.name
+                    .toLowerCase()
+                    .includes(
+                        currentSearch.toLowerCase()
+                    ) ||
+                product.category
+                    .toLowerCase()
+                    .includes(
+                        currentSearch.toLowerCase()
+                    );
+
+            return categoryMatch && searchMatch;
+
+        });
+
+
+    if(filtered.length === 0){
+
+        grid.innerHTML = `
+
+        <div class="empty-state">
+
+            <h3>Ничего не найдено</h3>
+
+            <p>
+                Попробуйте изменить запрос
+                или выбрать другую категорию.
+            </p>
+
+        </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    grid.innerHTML =
+        filtered.map(product => {
+
+            const isFavorite =
+                favorites.includes(product.id);
+
+            return `
+
+            <article class="product-card">
+
+                <div class="product-image">
+
+                    ${
+                        product.badge
+                        ?
+                        `
+                        <div class="product-badge">
+                            ${product.badge}
+                        </div>
+                        `
+                        :
+                        ""
+                    }
+
+                    <button
+                    class="favorite ${
+                        isFavorite ? "active" : ""
+                    }"
+                    onclick="toggleFavorite(${product.id})"
+                    aria-label="Добавить в избранное"
+                    >
+
+                    <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="${
+                        isFavorite
+                        ? "currentColor"
+                        : "none"
+                    }"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    >
+
+                    <path
+                    d="M20.8 8.7c0 5.5-8.8 11-8.8 11S3.2 14.2 3.2 8.7A4.7 4.7 0 0 1 12 6.2a4.7 4.7 0 0 1 8.8 2.5Z"
+                    />
+
+                    </svg>
+
+                    </button>
+
+
+                    <img
+                    src="${product.image}"
+                    alt="${product.name}"
+                    loading="lazy"
+                    onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1468495244123-6c6c332eeece?auto=format&fit=crop&w=900&q=80'"
+                    onclick="openProduct(${product.id})"
+                    style="cursor:pointer"
+                    >
+
+                </div>
+
+
+                <div class="product-body">
+
+                    <div class="product-category">
+                        ${product.category}
+                    </div>
+
+                    <h3
+                    class="product-title"
+                    >
+                        ${product.name}
+                    </h3>
+
+                    <p
+                    class="product-description"
+                    >
+                        ${product.description}
+                    </p>
+
+
+                    <div class="product-rating">
+
+                        <span class="rating-number">
+                            ${product.rating}
+                        </span>
+
+                        <span>
+                            ★
+                        </span>
+
+                        <span class="rating-count">
+                            ${product.reviews} отзывов
+                        </span>
+
+                    </div>
+
+
+                    <div class="product-bottom">
+
+                        <div class="product-price">
+
+                            <strong>
+                                ${formatPrice(product.price)}
+                            </strong>
+
+                            <span class="product-old">
+                                ${formatPrice(product.oldPrice)}
+                            </span>
+
+                        </div>
+
+
+                        <button
+                        class="add-cart"
+                        onclick="addToCart(${product.id})"
+                        aria-label="Добавить в корзину"
+                        >
+
+                        <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        >
+
+                        <path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.4L21 8H6"/>
+                        <circle cx="10" cy="20" r="1"/>
+                        <circle cx="18" cy="20" r="1"/>
+
+                        </svg>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            `;
+
+        }).join("");
+
+}
+
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+document.getElementById(
+    "categoryFilter"
+).addEventListener(
+    "change",
+    function(){
+
+        currentFilter =
+            this.value;
+
+        renderProducts();
+
+    }
+);
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+document.getElementById(
+    "searchInput"
+).addEventListener(
+    "input",
+    function(){
+
+        currentSearch =
+            this.value.trim();
+
+        renderProducts();
+
+    }
+);
+
+
+/* =========================================================
+   FAVORITES
+========================================================= */
+
+function toggleFavorite(id){
+
+    if(favorites.includes(id)){
+
+        favorites =
+            favorites.filter(
+                item => item !== id
+            );
+
+        showToast(
+            "Избранное",
+            "Товар удалён из избранного."
+        );
+
+    }else{
+
+        favorites.push(id);
+
+        showToast(
+            "Избранное",
+            "Товар добавлен в избранное."
+        );
+
+    }
+
+    saveState();
+    renderProducts();
+
+}
+
+
+/* =========================================================
+   ADD TO CART
+========================================================= */
+
+function addToCart(id){
+
+    const product =
+        products.find(
+            item => item.id === id
+        );
+
+    if(!product) return;
+
+
+    const existing =
+        cart.find(
+            item => item.id === id
+        );
+
+
+    if(existing){
+
+        existing.quantity++;
+
+    }else{
+
+        cart.push({
+            id:id,
+            quantity:1
+        });
+
+    }
+
+
+    saveState();
+
+
+    showToast(
+        "Корзина",
+        `${product.name} добавлен в корзину.`
+    );
+
+}
+
+
+/* =========================================================
+   REMOVE FROM CART
+========================================================= */
+
+function removeFromCart(id){
+
+    cart =
+        cart.filter(
+            item => item.id !== id
+        );
+
+    saveState();
+
+    renderCart();
+
+}
+
+
+/* =========================================================
+   CHANGE QUANTITY
+========================================================= */
+
+function changeQuantity(id,delta){
+
+    const item =
+        cart.find(
+            product => product.id === id
+        );
+
+    if(!item) return;
+
+    item.quantity += delta;
+
+    if(item.quantity <= 0){
+
+        cart =
+            cart.filter(
+                product => product.id !== id
+            );
+
+    }
+
+    saveState();
+
+    renderCart();
+
+}
+
+
+/* =========================================================
+   RENDER CART
+========================================================= */
+
+function renderCart(){
+
+    const list =
+        document.getElementById("cartList");
+
+    const totalElement =
+        document.getElementById("cartTotal");
+
+
+    if(cart.length === 0){
+
+        list.innerHTML = `
+
+        <div class="empty-state">
+
+            <h3>Корзина пуста</h3>
+
+            <p>
+                Добавьте товары из каталога.
+            </p>
+
+        </div>
+
+        `;
+
+        totalElement.textContent =
+            "0 ₸";
+
+        return;
+
+    }
+
+
+    let total = 0;
+
+
+    list.innerHTML =
+        cart.map(item=>{
+
+            const product =
+                products.find(
+                    p => p.id === item.id
+                );
+
+            if(!product) return "";
+
+
+            const itemTotal =
+                product.price *
+                item.quantity;
+
+            total += itemTotal;
+
+
+            return `
+
+            <div class="cart-item">
+
+                <div class="cart-item-image">
+
+                    <img
+                    src="${product.image}"
+                    alt="${product.name}"
+                    >
+
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        ${product.name}
+                    </h4>
+
+                    <p>
+                        ${formatPrice(product.price)}
+                    </p>
+
+
+                    <div
+                    style="
+                    display:flex;
+                    align-items:center;
+                    gap:7px;
+                    margin-top:8px;
+                    "
+                    >
+
+                    <button
+                    class="icon-button"
+                    style="width:28px;height:28px"
+                    onclick="changeQuantity(${product.id},-1)"
+                    >
+                    −
+                    </button>
+
+                    <span
+                    style="font-size:12px;font-weight:800"
+                    >
+                    ${item.quantity}
+                    </span>
+
+                    <button
+                    class="icon-button"
+                    style="width:28px;height:28px"
+                    onclick="changeQuantity(${product.id},1)"
+                    >
+                    +
+                    </button>
+
+                    </div>
+
+
+                    <button
+                    class="cart-remove"
+                    onclick="removeFromCart(${product.id})"
+                    >
+                    Удалить
+                    </button>
+
+                </div>
+
+
+                <div class="cart-price">
+
+                    ${formatPrice(itemTotal)}
+
+                </div>
+
+            </div>
+
+            `;
+
+        }).join("");
+
+
+    totalElement.textContent =
+        formatPrice(total);
+
+}
+
+
+/* =========================================================
+   PRODUCT MODAL
+========================================================= */
+
+function openProduct(id){
+
+    const product =
+        products.find(
+            p => p.id === id
+        );
+
+    if(!product) return;
+
+
+    const content =
+        document.getElementById(
+            "productModalContent"
+        );
+
+
+    content.innerHTML = `
+
+    <div class="product-detail">
+
+        <div class="product-detail-image">
+
+            <img
+            src="${product.image}"
+            alt="${product.name}"
+            >
+
+        </div>
+
+
+        <div>
+
+            <div class="detail-category">
+                ${product.category}
+            </div>
+
+            <h2 class="detail-title">
+                ${product.name}
+            </h2>
+
+            <p class="detail-description">
+                ${product.description}
+            </p>
+
+
+            <div class="product-rating">
+
+                <span class="rating-number">
+                    ${product.rating}
+                </span>
+
+                <span>
+                    ★
+                </span>
+
+                <span class="rating-count">
+                    ${product.reviews} отзывов
+                </span>
+
+            </div>
+
+
+            <div class="detail-price">
+                ${formatPrice(product.price)}
+            </div>
+
+
+            <div class="specs">
+
+                ${
+                    Object.entries(
+                        product.specs
+                    ).map(
+                        ([key,value])=>`
+
+                        <div class="spec">
+
+                            <span>
+                                ${key}
+                            </span>
+
+                            <strong>
+                                ${value}
+                            </strong>
+
+                        </div>
+
+                        `
+                    ).join("")
+                }
+
+            </div>
+
+
+            <button
+            class="btn btn-primary"
+            style="width:100%"
+            onclick="
+                addToCart(${product.id});
+                closeModal('productModal');
+            "
+            >
+
+            Добавить в корзину
+
+            <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            >
+
+            <path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.4L21 8H6"/>
+
+            </svg>
+
+            </button>
+
+        </div>
+
+    </div>
+
+    `;
+
+
+    document
+        .getElementById("productModal")
+        .classList.add("show");
+
+}
+
+
+/* =========================================================
+   MODALS
+========================================================= */
+
+function closeModal(id){
+
+    document
+        .getElementById(id)
+        .classList.remove("show");
+
+}
+
+
+document
+    .getElementById("cartButton")
+    .addEventListener(
+        "click",
+        ()=>{
+            renderCart();
+            document
+                .getElementById("cartModal")
+                .classList.add("show");
+        }
+    );
+
+
+document
+    .getElementById("productModal")
+    .addEventListener(
+        "click",
+        function(e){
+
+            if(e.target === this){
+
+                closeModal("productModal");
+
+            }
+
+        }
+    );
+
+
+document
+    .getElementById("cartModal")
+    .addEventListener(
+        "click",
+        function(e){
+
+            if(e.target === this){
+
+                closeModal("cartModal");
+
+            }
+
+        }
+    );
+
+
+document.addEventListener(
+    "keydown",
+    function(e){
+
+        if(e.key === "Escape"){
+
+            document
+                .querySelectorAll(".modal.show")
+                .forEach(
+                    modal =>
+                        modal.classList.remove("show")
+                );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   CHECKOUT
+========================================================= */
+
+document
+    .getElementById("checkoutButton")
+    .addEventListener(
+        "click",
+        function(){
+
+            if(cart.length === 0){
+
+                showToast(
+                    "Корзина",
+                    "Сначала добавьте товары."
+                );
+
+                return;
+
+            }
+
+            closeModal("cartModal");
+
+            navigate("checkout");
+
+        }
+    );
+
+
+function renderCheckout(){
+
+    const container =
+        document.getElementById(
+            "checkoutSummary"
+        );
+
+    if(!container) return;
+
+
+    let total = 0;
+
+
+    const rows =
+        cart.map(item=>{
+
+            const product =
+                products.find(
+                    p => p.id === item.id
+                );
+
+            if(!product) return "";
+
+            const sum =
+                product.price *
+                item.quantity;
+
+            total += sum;
+
+
+            return `
+
+            <div class="summary-line">
+
+                <span>
+                    ${product.name}
+                    × ${item.quantity}
+                </span>
+
+                <strong>
+                    ${formatPrice(sum)}
+                </strong>
+
+            </div>
+
+            `;
+
+        }).join("");
+
+
+    container.innerHTML =
+        rows +
+
+        `
+
+        <div class="summary-line">
+
+            <span>
+                Доставка
+            </span>
+
+            <strong>
+                Рассчитывается
+            </strong>
+
+        </div>
+
+        <div class="summary-line total">
+
+            <span>
+                Итого
+            </span>
+
+            <strong>
+                ${formatPrice(total)}
+            </strong>
+
+        </div>
+
+        `;
+
+}
+
+
+/* =========================================================
+   CHECKOUT VALIDATION
+========================================================= */
+
+document
+    .getElementById("checkoutForm")
+    .addEventListener(
+        "submit",
+        function(e){
+
+            e.preventDefault();
+
+
+            const name =
+                document.getElementById(
+                    "checkoutName"
+                );
+
+            const phone =
+                document.getElementById(
+                    "checkoutPhone"
+                );
+
+            const address =
+                document.getElementById(
+                    "checkoutAddress"
+                );
+
+
+            let valid = true;
+
+
+            if(name.value.trim().length < 2){
+
+                document.getElementById(
+                    "checkoutNameError"
+                ).textContent =
+                    "Введите имя.";
+
+                valid = false;
+
+            }else{
+
+                document.getElementById(
+                    "checkoutNameError"
+                ).textContent = "";
+
+            }
+
+
+            if(!/^\+?[0-9\s\-()]{10,20}$/.test(
+                phone.value.trim()
+            )){
+
+                document.getElementById(
+                    "checkoutPhoneError"
+                ).textContent =
+                    "Введите корректный телефон.";
+
+                valid = false;
+
+            }else{
+
+                document.getElementById(
+                    "checkoutPhoneError"
+                ).textContent = "";
+
+            }
+
+
+            if(address.value.trim().length < 5){
+
+                document.getElementById(
+                    "checkoutAddressError"
+                ).textContent =
+                    "Введите адрес доставки.";
+
+                valid = false;
+
+            }else{
+
+                document.getElementById(
+                    "checkoutAddressError"
+                ).textContent = "";
+
+            }
+
+
+            if(!valid) return;
+
+
+            const orderNumber =
+                Math.floor(
+                    100000 +
+                    Math.random()*900000
+                );
+
+
+            cart = [];
+
+            saveState();
+
+            this.reset();
+
+
+            showToast(
+                "Заказ оформлен",
+                `Номер заказа: #${orderNumber}. Менеджер свяжется с вами.`
+            );
+
+
+            setTimeout(
+                ()=>navigate("home"),
+                1000
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   CONTACT FORM
+========================================================= */
+
+document
+    .getElementById("contactForm")
+    .addEventListener(
+        "submit",
+        function(e){
+
+            e.preventDefault();
+
+
+            const name =
+                document.getElementById("name");
+
+            const email =
+                document.getElementById("email");
+
+            const phone =
+                document.getElementById("phone");
+
+            const topic =
+                document.getElementById("topic");
+
+            const message =
+                document.getElementById("message");
+
+
+            let valid = true;
+
+
+            if(name.value.trim().length < 2){
+
+                document.getElementById(
+                    "nameError"
+                ).textContent =
+                    "Введите имя и фамилию.";
+
+                valid=false;
+
+            }else{
+
+                document.getElementById(
+                    "nameError"
+                ).textContent="";
+
+            }
+
+
+            const emailPattern =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+            if(!emailPattern.test(
+                email.value.trim()
+            )){
+
+                document.getElementById(
+                    "emailError"
+                ).textContent =
+                    "Введите корректный email.";
+
+                valid=false;
+
+            }else{
+
+                document.getElementById(
+                    "emailError"
+                ).textContent="";
+
+            }
+
+
+            if(!/^\+?[0-9\s\-()]{10,20}$/.test(
+                phone.value.trim()
+            )){
+
+                document.getElementById(
+                    "phoneError"
+                ).textContent =
+                    "Введите корректный телефон.";
+
+                valid=false;
+
+            }else{
+
+                document.getElementById(
+                    "phoneError"
+                ).textContent="";
+
+            }
+
+
+            if(!topic.value){
+
+                document.getElementById(
+                    "topicError"
+                ).textContent =
+                    "Выберите тему.";
+
+                valid=false;
+
+            }else{
+
+                document.getElementById(
+                    "topicError"
+                ).textContent="";
+
+            }
+
+
+            if(message.value.trim().length < 10){
+
+                document.getElementById(
+                    "messageError"
+                ).textContent =
+                    "Сообщение должно содержать минимум 10 символов.";
+
+                valid=false;
+
+            }else{
+
+                document.getElementById(
+                    "messageError"
+                ).textContent="";
+
+            }
+
+
+            if(!valid) return;
+
+
+            showToast(
+                "Сообщение отправлено",
+                "Спасибо. Менеджер свяжется с вами."
+            );
+
+
+            this.reset();
+
+        }
+    );
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+document
+    .querySelectorAll(".faq-question")
+    .forEach(
+        button => {
+
+            button.addEventListener(
+                "click",
+                function(){
+
+                    const faq =
+                        this.parentElement;
+
+                    const answer =
+                        faq.querySelector(
+                            ".faq-answer"
+                        );
+
+
+                    const isOpen =
+                        faq.classList.contains(
+                            "open"
+                        );
+
+
+                    document
+                        .querySelectorAll(".faq")
+                        .forEach(
+                            item=>{
+
+                                item.classList.remove(
+                                    "open"
+                                );
+
+                                item.querySelector(
+                                    ".faq-answer"
+                                ).style.maxHeight =
+                                    null;
+
+                            }
+                        );
+
+
+                    if(!isOpen){
+
+                        faq.classList.add(
+                            "open"
+                        );
+
+                        answer.style.maxHeight =
+                            answer.scrollHeight +
+                            "px";
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   PAGE NAVIGATION
+========================================================= */
+
+function navigate(page){
+
+    const allowed = [
+        "home",
+        "catalog",
+        "services",
+        "about",
+        "contact",
+        "checkout",
+        "404"
+    ];
+
+
+    if(!allowed.includes(page)){
+
+        page = "404";
+
+    }
+
+
+    document
+        .querySelectorAll(".page")
+        .forEach(
+            p => p.classList.remove("active")
+        );
+
+
+    const target =
+        document.getElementById(
+            "page-" + page
+        );
+
+
+    if(target){
+
+        target.classList.add("active");
+
+    }
+
+
+    document
+        .querySelectorAll("[data-page]")
+        .forEach(
+            link=>{
+
+                if(link.dataset.page === page){
+
+                    link.classList.add("active");
+
+                }else{
+
+                    link.classList.remove("active");
+
+                }
+
+            }
+        );
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+
+    if(page === "catalog"){
+
+        renderProducts();
+
+    }
+
+
+    if(page === "checkout"){
+
+        renderCheckout();
+
+    }
+
+
+    document
+        .getElementById("mobilePanel")
+        .classList.remove("show");
+
+}
+
+
+function handleHash(){
+
+    const hash =
+        location.hash.replace("#","");
+
+
+    if(!hash){
+
+        navigate("home");
+        return;
+
+    }
+
+
+    navigate(
+        hash
+    );
+
+}
+
+
+window.addEventListener(
+    "hashchange",
+    handleHash
+);
+
+
+document.addEventListener(
+    "click",
+    function(e){
+
+        const element =
+            e.target.closest(
+                "[data-page]"
+            );
+
+        if(!element) return;
+
+
+        const page =
+            element.dataset.page;
+
+
+        if(
+            element.tagName === "A" &&
+            element.getAttribute("href")
+        ){
+
+            return;
+
+        }
+
+
+        e.preventDefault();
+
+        location.hash = page;
+
+    }
+);
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+document
+    .getElementById(
+        "mobileMenuButton"
+    )
+    .addEventListener(
+        "click",
+        function(){
+
+            document
+                .getElementById(
+                    "mobilePanel"
+                )
+                .classList.toggle(
+                    "show"
+                );
+
+        }
+    );
+
+
+/* =========================================================
+   THEME
+========================================================= */
+
+const savedTheme =
+    localStorage.getItem(
+        "nexoraTheme"
+    );
+
+
+if(savedTheme === "light"){
+
+    document.body.classList.add(
+        "light"
+    );
+
+}
+
+
+document
+    .getElementById("themeButton")
+    .addEventListener(
+        "click",
+        function(){
+
+            document.body.classList.toggle(
+                "light"
+            );
+
+
+            localStorage.setItem(
+                "nexoraTheme",
+
+                document.body.classList.contains(
+                    "light"
+                )
+                ?
+                "light"
+                :
+                "dark"
+            );
+
+
+            showToast(
+                "Тема",
+                document.body.classList.contains(
+                    "light"
+                )
+                ?
+                "Светлая тема включена."
+                :
+                "Тёмная тема включена."
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   FAVORITE HEADER BUTTON
+========================================================= */
+
+document
+    .getElementById(
+        "favoriteButton"
+    )
+    .addEventListener(
+        "click",
+        function(){
+
+            if(favorites.length === 0){
+
+                showToast(
+                    "Избранное",
+                    "В избранном пока нет товаров."
+                );
+
+                return;
+
+            }
+
+
+            navigate("catalog");
+
+
+            setTimeout(
+                ()=>{
+
+                    currentSearch="";
+                    currentFilter="all";
+
+                    document.getElementById(
+                        "searchInput"
+                    ).value="";
+
+                    document.getElementById(
+                        "categoryFilter"
+                    ).value="all";
+
+
+                    renderProducts();
+
+
+                    document
+                        .querySelectorAll(
+                            ".product-card"
+                        )
+                        .forEach(
+                            card=>{
+                                // Обновление выполняется через renderProducts
+                            }
+                        );
+
+                    showToast(
+                        "Избранное",
+                        `У вас ${favorites.length} избранных товаров.`
+                    );
+
+                },
+                100
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+function showToast(title,message){
+
+    const container =
+        document.getElementById(
+            "toastContainer"
+        );
+
+
+    const toast =
+        document.createElement(
+            "div"
+        );
+
+
+    toast.className =
+        "toast";
+
+
+    toast.innerHTML = `
+
+    <div class="toast-icon">
+
+        <svg
+        width="15"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        >
+
+        <path
+        d="m5 12 4 4L19 6"
+        />
+
+        </svg>
+
+    </div>
+
+    <div>
+
+        <strong>
+            ${title}
+        </strong>
+
+        <p>
+            ${message}
+        </p>
+
+    </div>
+
+    `;
+
+
+    container.appendChild(
+        toast
+    );
+
+
+    setTimeout(
+        ()=>{
+
+            toast.style.opacity="0";
+            toast.style.transform="translateX(30px)";
+
+            setTimeout(
+                ()=>toast.remove(),
+                300
+            );
+
+        },
+        3500
+    );
+
+}
+
+
+/* =========================================================
+   COPY PROMO
+========================================================= */
+
+function copyPromo(){
+
+    navigator.clipboard
+        .writeText("NEXORA15")
+        .then(
+            ()=>{
+                showToast(
+                    "Промокод",
+                    "Код NEXORA15 скопирован."
+                );
+            }
+        )
+        .catch(
+            ()=>{
+                showToast(
+                    "Промокод",
+                    "Используйте код NEXORA15 при заказе."
+                );
+            }
+        );
+
+}
+
+
+/* =========================================================
+   CATEGORY CLICK
+========================================================= */
+
+document
+    .querySelectorAll(".category-card")
+    .forEach(
+        card=>{
+
+            card.addEventListener(
+                "click",
+                function(){
+
+                    const category =
+                        this.dataset.category;
+
+
+                    navigate("catalog");
+
+
+                    setTimeout(
+                        ()=>{
+
+                            currentFilter =
+                                category;
+
+                            currentSearch="";
+
+
+                            document.getElementById(
+                                "categoryFilter"
+                            ).value =
+                                category;
+
+                            document.getElementById(
+                                "searchInput"
+                            ).value="";
+
+
+                            renderProducts();
+
+                        },
+                        100
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const observer =
+    new IntersectionObserver(
+        entries=>{
+
+            entries.forEach(
+                entry=>{
+
+                    if(entry.isIntersecting){
+
+                        entry.target.classList.add(
+                            "visible"
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold:.1
+        }
+    );
+
+
+function observeReveal(){
+
+    document
+        .querySelectorAll(
+            ".reveal"
+        )
+        .forEach(
+            element=>{
+                observer.observe(
+                    element
+                );
+            }
+        );
+
+}
+
+
+/* =========================================================
+   IMAGE FALLBACK
+========================================================= */
+
+document
+    .addEventListener(
+        "error",
+        function(e){
+
+            if(
+                e.target.tagName === "IMG" &&
+                !e.target.dataset.fallback
+            ){
+
+                e.target.dataset.fallback="true";
+
+                e.target.src =
+                    "https://images.unsplash.com/photo-1468495244123-6c6c332eeece?auto=format&fit=crop&w=900&q=80";
+
+            }
+
+        },
+        true
+    );
+
+
+/* =========================================================
+   INITIALIZATION
+========================================================= */
+
+renderProducts();
+
+updateCounters();
+
+observeReveal();
+
+handleHash();
+
+
+/* =========================================================
+   DEMO PAGE TEST
+========================================================= */
+
+if(
+    location.hash &&
+    ![
+        "#home",
+        "#catalog",
+        "#services",
+        "#about",
+        "#contact",
+        "#checkout"
+    ].includes(
+        location.hash
+    )
+){
+
+    navigate("404");
+
+}
+
+
+/* =========================================================
+   PREVENT FORM SUBMIT BY ENTER WHERE NEEDED
+========================================================= */
+
+document
+    .querySelectorAll(
+        "input"
+    )
+    .forEach(
+        input=>{
+
+            input.addEventListener(
+                "invalid",
+                function(){
+
+                    this.scrollIntoView({
+                        behavior:"smooth",
+                        block:"center"
+                    });
+
+                }
+            );
+
+        }
+    );
+
+</script>
+
+</body>
+</html>
