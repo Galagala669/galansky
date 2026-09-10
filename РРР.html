@@ -1,0 +1,3490 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VERA — цветочная студия</title>
+
+<meta name="description"
+content="VERA — авторская цветочная студия. Букеты, композиции, оформление мероприятий и доставка цветов.">
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f8f7f4;
+    color: #251e20;
+    overflow-x: hidden;
+}
+
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root {
+    --burgundy: #641c2d;
+    --burgundy-dark: #48121f;
+    --burgundy-light: #8b4053;
+
+    --white: #ffffff;
+    --cream: #f8f7f4;
+    --dark: #251e20;
+    --gray: #777174;
+    --line: #ddd8d5;
+
+    --container: 1240px;
+}
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+.container {
+    width: min(var(--container), 90%);
+    margin: 0 auto;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.section {
+    padding: 110px 0;
+}
+
+.small-title {
+    color: var(--burgundy);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: clamp(52px, 8vw, 112px);
+    line-height: .91;
+    font-weight: 700;
+    letter-spacing: -5px;
+}
+
+h2 {
+    font-size: clamp(42px, 6vw, 76px);
+    line-height: .95;
+    letter-spacing: -3px;
+}
+
+h3 {
+    line-height: 1.1;
+}
+
+p {
+    color: var(--gray);
+    line-height: 1.7;
+}
+
+.burgundy {
+    color: var(--burgundy);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+
+    background: rgba(248,247,244,.93);
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid rgba(100,28,45,.12);
+}
+
+.navbar {
+    height: 82px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 27px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.logo-mark {
+    width: 34px;
+    height: 34px;
+
+    background: var(--burgundy);
+    color: white;
+
+    display: grid;
+    place-items: center;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.nav-links {
+    display: flex;
+    gap: 34px;
+}
+
+.nav-links a {
+    position: relative;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nav-links a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--burgundy);
+
+    transition: .3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.header-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.header-btn {
+    width: 43px;
+    height: 43px;
+
+    background: transparent;
+
+    border: 1px solid var(--line);
+
+    color: var(--burgundy);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    transition: .25s;
+}
+
+.header-btn:hover {
+    background: var(--burgundy);
+    color: white;
+    border-color: var(--burgundy);
+}
+
+.burger {
+    display: none;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 100vh;
+
+    padding-top: 130px;
+
+    display: grid;
+    grid-template-columns: .85fr 1.15fr;
+    gap: 70px;
+
+    align-items: center;
+}
+
+.hero-left {
+    padding-bottom: 40px;
+}
+
+.hero-label {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    margin-bottom: 30px;
+}
+
+.hero-label::before {
+    content: "";
+
+    width: 45px;
+    height: 1px;
+
+    background: var(--burgundy);
+}
+
+.hero-description {
+    max-width: 470px;
+    margin-top: 35px;
+
+    font-size: 17px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+
+    margin-top: 35px;
+}
+
+.btn {
+    min-height: 52px;
+
+    padding: 0 24px;
+
+    border: 1px solid var(--burgundy);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+
+    transition: .3s;
+}
+
+.btn-primary {
+    background: var(--burgundy);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--burgundy-dark);
+    transform: translateY(-3px);
+}
+
+.btn-outline {
+    color: var(--burgundy);
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background: var(--burgundy);
+    color: white;
+}
+
+.hero-right {
+    height: 690px;
+
+    position: relative;
+}
+
+.hero-photo {
+    position: absolute;
+
+    width: 75%;
+    height: 85%;
+
+    right: 0;
+    top: 5%;
+
+    overflow: hidden;
+}
+
+.hero-photo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 1s ease;
+}
+
+.hero-photo:hover img {
+    transform: scale(1.04);
+}
+
+.hero-number {
+    position: absolute;
+
+    left: 0;
+    bottom: 40px;
+
+    width: 160px;
+    height: 160px;
+
+    background: var(--burgundy);
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 25px;
+}
+
+.hero-number strong {
+    font-size: 42px;
+    line-height: 1;
+}
+
+.hero-number span {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    margin-top: 8px;
+}
+
+
+/* =========================================================
+   MARQUEE
+========================================================= */
+
+.marquee {
+    background: var(--burgundy);
+    color: white;
+
+    overflow: hidden;
+
+    padding: 20px 0;
+
+    white-space: nowrap;
+}
+
+.marquee-track {
+    display: inline-block;
+
+    animation: moveText 25s linear infinite;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+@keyframes moveText {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+
+    gap: 100px;
+
+    align-items: start;
+}
+
+.intro-title {
+    position: sticky;
+    top: 120px;
+}
+
+.intro-text {
+    font-size: 25px;
+    line-height: 1.45;
+
+    max-width: 750px;
+}
+
+.intro-text strong {
+    color: var(--burgundy);
+}
+
+
+/* =========================================================
+   COLLECTION
+========================================================= */
+
+.collection-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+
+    margin-bottom: 60px;
+}
+
+.collection-head p {
+    max-width: 370px;
+}
+
+.collection-grid {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1.2fr 1fr;
+
+    gap: 18px;
+
+    align-items: start;
+}
+
+.collection-card {
+    background: white;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.collection-card:nth-child(2) {
+    margin-top: 100px;
+}
+
+.collection-image {
+    height: 430px;
+    overflow: hidden;
+}
+
+.collection-card:nth-child(2)
+.collection-image {
+    height: 570px;
+}
+
+.collection-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: .7s;
+}
+
+.collection-card:hover img {
+    transform: scale(1.06);
+}
+
+.collection-info {
+    padding: 25px;
+}
+
+.collection-info span {
+    color: var(--burgundy);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.collection-info h3 {
+    font-size: 25px;
+
+    margin-top: 10px;
+}
+
+.collection-info p {
+    margin-top: 8px;
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    min-height: 680px;
+}
+
+.about-image {
+    overflow: hidden;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about-content {
+    background: var(--burgundy);
+    color: white;
+
+    padding: 80px;
+}
+
+.about-content .small-title {
+    color: white;
+}
+
+.about-content h2 {
+    margin-bottom: 35px;
+}
+
+.about-content p {
+    color: rgba(255,255,255,.72);
+
+    max-width: 520px;
+
+    font-size: 17px;
+}
+
+.about-list {
+    margin-top: 45px;
+
+    border-top: 1px solid rgba(255,255,255,.25);
+}
+
+.about-list div {
+    padding: 18px 0;
+
+    border-bottom: 1px solid rgba(255,255,255,.25);
+
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.about-list span:last-child {
+    opacity: .55;
+}
+
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.services-grid {
+    border-top: 1px solid var(--line);
+}
+
+.service {
+    display: grid;
+    grid-template-columns: 100px 1fr 100px;
+
+    align-items: center;
+
+    padding: 35px 0;
+
+    border-bottom: 1px solid var(--line);
+
+    transition: .3s;
+}
+
+.service:hover {
+    padding-left: 20px;
+    padding-right: 20px;
+
+    background: white;
+}
+
+.service-number {
+    color: var(--burgundy);
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.service h3 {
+    font-size: 32px;
+}
+
+.service p {
+    max-width: 650px;
+
+    margin-top: 8px;
+}
+
+.service-arrow {
+    text-align: right;
+
+    color: var(--burgundy);
+
+    font-size: 30px;
+}
+
+
+/* =========================================================
+   CATALOG
+========================================================= */
+
+.catalog-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+
+    gap: 30px;
+
+    margin-bottom: 45px;
+}
+
+.search {
+    width: 350px;
+
+    border-bottom: 2px solid var(--burgundy);
+
+    display: flex;
+}
+
+.search input {
+    width: 100%;
+
+    border: 0;
+    outline: 0;
+
+    background: transparent;
+
+    padding: 13px 0;
+
+    font-size: 15px;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-bottom: 45px;
+}
+
+.filter {
+    padding: 11px 17px;
+
+    border: 1px solid var(--line);
+
+    background: transparent;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    transition: .25s;
+}
+
+.filter:hover,
+.filter.active {
+    background: var(--burgundy);
+    color: white;
+
+    border-color: var(--burgundy);
+}
+
+.products {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 22px;
+}
+
+.product {
+    background: white;
+
+    border: 1px solid #ebe7e4;
+
+    transition: .3s;
+}
+
+.product:hover {
+    transform: translateY(-8px);
+}
+
+.product-image {
+    height: 410px;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: .6s;
+}
+
+.product:hover .product-image img {
+    transform: scale(1.06);
+}
+
+.product-category {
+    position: absolute;
+
+    left: 15px;
+    top: 15px;
+
+    background: white;
+
+    color: var(--burgundy);
+
+    padding: 8px 11px;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.product-body {
+    padding: 25px;
+}
+
+.product-body h3 {
+    font-size: 25px;
+}
+
+.product-body p {
+    margin-top: 8px;
+
+    font-size: 14px;
+}
+
+.product-bottom {
+    margin-top: 22px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price {
+    color: var(--burgundy);
+
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.product-link {
+    border: 0;
+
+    background: transparent;
+
+    color: var(--burgundy);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   DETAIL
+========================================================= */
+
+.detail {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 70px;
+
+    align-items: center;
+}
+
+.detail-image {
+    height: 650px;
+
+    overflow: hidden;
+}
+
+.detail-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.detail-info h1 {
+    font-size: clamp(50px, 6vw, 85px);
+}
+
+.detail-description {
+    max-width: 500px;
+
+    margin-top: 30px;
+
+    font-size: 18px;
+}
+
+.detail-price {
+    color: var(--burgundy);
+
+    font-size: 30px;
+    font-weight: 800;
+
+    margin: 30px 0;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-layout {
+    display: grid;
+
+    grid-template-columns: .8fr 1.2fr;
+
+    gap: 80px;
+}
+
+.contact-left h2 {
+    margin-bottom: 30px;
+}
+
+.contact-details {
+    margin-top: 45px;
+}
+
+.contact-detail {
+    padding: 20px 0;
+
+    border-top: 1px solid var(--line);
+}
+
+.contact-detail:last-child {
+    border-bottom: 1px solid var(--line);
+}
+
+.contact-detail span {
+    display: block;
+
+    color: var(--burgundy);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    margin-bottom: 6px;
+}
+
+.form {
+    background: white;
+
+    padding: 50px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form label {
+    display: block;
+
+    color: var(--burgundy);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    margin-bottom: 10px;
+}
+
+.form input,
+.form textarea {
+    width: 100%;
+
+    border: 0;
+    border-bottom: 1px solid var(--line);
+
+    background: transparent;
+
+    padding: 12px 0;
+
+    outline: 0;
+
+    font-size: 16px;
+
+    color: var(--dark);
+}
+
+.form textarea {
+    height: 130px;
+
+    resize: vertical;
+}
+
+.form input:focus,
+.form textarea:focus {
+    border-color: var(--burgundy);
+}
+
+.error {
+    min-height: 18px;
+
+    color: #a52c42;
+
+    font-size: 11px;
+
+    margin-top: 6px;
+}
+
+.success {
+    display: none;
+
+    background: #edf5ef;
+
+    color: #356342;
+
+    padding: 15px;
+
+    margin-bottom: 20px;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   404
+========================================================= */
+
+.not-found {
+    min-height: 80vh;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.not-found-number {
+    font-size: clamp(130px, 25vw, 300px);
+
+    line-height: .75;
+
+    font-weight: 900;
+
+    color: var(--burgundy);
+
+    letter-spacing: -15px;
+}
+
+.not-found h2 {
+    margin-top: 50px;
+}
+
+.not-found p {
+    max-width: 500px;
+
+    margin: 20px auto 30px;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal-bg {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(30,10,16,.75);
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 2000;
+
+    padding: 20px;
+}
+
+.modal-bg.open {
+    display: flex;
+}
+
+.modal {
+    width: min(600px, 100%);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: white;
+
+    padding: 45px;
+
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+
+    top: 18px;
+    right: 18px;
+
+    width: 38px;
+    height: 38px;
+
+    background: transparent;
+
+    border: 1px solid var(--line);
+
+    color: var(--burgundy);
+
+    font-size: 20px;
+}
+
+.modal h2 {
+    font-size: 40px;
+}
+
+
+/* =========================================================
+   CART
+========================================================= */
+
+.cart-item {
+    padding: 18px 0;
+
+    border-bottom: 1px solid var(--line);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.cart-remove {
+    background: transparent;
+
+    border: 0;
+
+    color: var(--burgundy);
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.cart-total {
+    margin-top: 25px;
+
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 22px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    background: var(--burgundy);
+
+    color: white;
+
+    padding: 70px 0 30px;
+}
+
+.footer-grid {
+    display: grid;
+
+    grid-template-columns: 1.3fr 1fr 1fr;
+
+    gap: 60px;
+}
+
+.footer-logo {
+    font-size: 35px;
+
+    font-weight: 900;
+}
+
+.footer-text {
+    color: rgba(255,255,255,.65);
+
+    margin-top: 15px;
+
+    max-width: 350px;
+}
+
+footer h4 {
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 20px;
+}
+
+.footer-links {
+    display: grid;
+
+    gap: 10px;
+
+    color: rgba(255,255,255,.7);
+
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.copyright {
+    margin-top: 60px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid rgba(255,255,255,.2);
+
+    color: rgba(255,255,255,.5);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width: 950px) {
+
+    .nav-links {
+        display: none;
+
+        position: absolute;
+
+        top: 82px;
+        left: 0;
+        right: 0;
+
+        background: var(--cream);
+
+        padding: 25px;
+
+        flex-direction: column;
+
+        gap: 20px;
+
+        border-bottom: 1px solid var(--line);
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+
+        padding-top: 120px;
+    }
+
+    .hero-right {
+        height: 600px;
+    }
+
+    .intro {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+    .intro-title {
+        position: static;
+    }
+
+    .collection-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .collection-card:nth-child(2) {
+        margin-top: 0;
+    }
+
+    .collection-card:nth-child(3) {
+        grid-column: 1 / -1;
+    }
+
+    .about-layout,
+    .contact-layout,
+    .detail {
+        grid-template-columns: 1fr;
+    }
+
+    .products {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width: 600px) {
+
+    .container {
+        width: 91%;
+    }
+
+    .section {
+        padding: 75px 0;
+    }
+
+    .navbar {
+        height: 70px;
+    }
+
+    .nav-links {
+        top: 70px;
+    }
+
+    h1 {
+        letter-spacing: -3px;
+    }
+
+    h2 {
+        letter-spacing: -2px;
+    }
+
+    .hero {
+        padding-top: 100px;
+    }
+
+    .hero-right {
+        height: 430px;
+    }
+
+    .hero-photo {
+        width: 85%;
+        height: 90%;
+    }
+
+    .hero-number {
+        width: 120px;
+        height: 120px;
+
+        padding: 18px;
+    }
+
+    .hero-number strong {
+        font-size: 30px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .collection-head,
+    .catalog-top {
+        display: block;
+    }
+
+    .search {
+        width: 100%;
+        margin-top: 25px;
+    }
+
+    .collection-grid,
+    .products {
+        grid-template-columns: 1fr;
+    }
+
+    .collection-card:nth-child(3) {
+        grid-column: auto;
+    }
+
+    .collection-image,
+    .collection-card:nth-child(2) .collection-image {
+        height: 420px;
+    }
+
+    .about-content {
+        padding: 45px 30px;
+    }
+
+    .service {
+        grid-template-columns: 45px 1fr 30px;
+    }
+
+    .service h3 {
+        font-size: 23px;
+    }
+
+    .service p {
+        font-size: 13px;
+    }
+
+    .product-image {
+        height: 390px;
+    }
+
+    .detail-image {
+        height: 430px;
+    }
+
+    .form {
+        padding: 30px 22px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =======================================================
+     HEADER
+======================================================= -->
+
+<header>
+
+<div class="container navbar">
+
+<a href="#home" class="logo">
+
+<span class="logo-mark">
+V
+</span>
+
+VERA
+
+</a>
+
+
+<nav class="nav-links" id="navLinks">
+
+<a href="#home">Главная</a>
+
+<a href="#about">О студии</a>
+
+<a href="#services">Услуги</a>
+
+<a href="#catalog">Каталог</a>
+
+<a href="#contact">Контакты</a>
+
+</nav>
+
+
+<div class="header-actions">
+
+<button
+class="header-btn"
+id="themeButton"
+title="Сменить тему">
+
+Т
+
+</button>
+
+<button
+class="header-btn"
+id="cartButton"
+title="Корзина">
+
+К
+<span id="cartCount">0</span>
+
+</button>
+
+<button
+class="header-btn burger"
+id="burgerButton">
+
+М
+
+</button>
+
+</div>
+
+</div>
+
+</header>
+
+
+
+<!-- =======================================================
+     MAIN
+======================================================= -->
+
+<main>
+
+
+<!-- =======================================================
+     HOME
+======================================================= -->
+
+<section
+class="page"
+data-page="home">
+
+<div class="container">
+
+<div class="hero">
+
+
+<div class="hero-left">
+
+<div class="hero-label">
+
+<div class="small-title">
+Цветочная студия
+</div>
+
+</div>
+
+
+<h1>
+
+Цветы,<br>
+
+которые<br>
+
+говорят.
+
+</h1>
+
+
+<p class="hero-description">
+
+VERA создаёт авторские композиции
+для тех моментов, которые хочется
+запомнить надолго.
+
+</p>
+
+
+<div class="hero-buttons">
+
+<a
+href="#catalog"
+class="btn btn-primary">
+
+Смотреть коллекцию
+
+</a>
+
+
+<a
+href="#contact"
+class="btn btn-outline">
+
+Заказать букет
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="hero-right">
+
+<div class="hero-photo">
+
+<img
+src="https://images.unsplash.com/photo-1494336934273-f5e7b7a6f7d0?auto=format&fit=crop&w=1200&q=90"
+alt="Авторская композиция из цветов">
+
+</div>
+
+
+<div class="hero-number">
+
+<strong>07</strong>
+
+<span>
+лет создаём
+композиции
+</span>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<div class="marquee">
+
+<div class="marquee-track">
+
+VERA FLOWER STUDIO — AUTHOR'S BOUQUETS — ALMATY — VERA FLOWER STUDIO — AUTHOR'S BOUQUETS — ALMATY —
+
+</div>
+
+</div>
+
+
+<div class="container section">
+
+<div class="intro">
+
+
+<div class="intro-title">
+
+<div class="small-title">
+Философия VERA
+</div>
+
+<h2>
+Меньше<br>
+случайного.<br>
+Больше<br>
+характера.
+</h2>
+
+</div>
+
+
+<div>
+
+<p class="intro-text">
+
+Мы не собираем букеты по шаблону.
+
+<strong>
+Каждая композиция создаётся
+как отдельная история
+</strong>
+
+— с собственным цветом,
+формой, ритмом и настроением.
+
+</p>
+
+<br>
+
+<p class="intro-text">
+
+Мы выбираем сезонные цветы,
+работаем с фактурой и оставляем
+достаточно воздуха между деталями.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =======================================================
+     ABOUT
+======================================================= -->
+
+<section
+class="page"
+data-page="about">
+
+<div class="container section">
+
+<div class="about-layout">
+
+
+<div class="about-image">
+
+<img
+src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=1200&q=90"
+alt="Цветочная композиция VERA">
+
+</div>
+
+
+<div class="about-content">
+
+<div class="small-title">
+О студии
+</div>
+
+<h2>
+Создаём<br>
+не букеты,<br>
+а впечатления.
+</h2>
+
+<p>
+
+VERA — независимая цветочная студия,
+в которой традиционная флористика
+встречается с современным дизайном.
+
+Мы любим выразительные формы,
+глубокие оттенки и композиции,
+которые выглядят естественно.
+
+</p>
+
+
+<div class="about-list">
+
+<div>
+
+<span>
+Авторские букеты
+</span>
+
+<span>
+01
+</span>
+
+</div>
+
+
+<div>
+
+<span>
+Свадебная флористика
+</span>
+
+<span>
+02
+</span>
+
+</div>
+
+
+<div>
+
+<span>
+Оформление событий
+</span>
+
+<span>
+03
+</span>
+
+</div>
+
+
+<div>
+
+<span>
+Корпоративные решения
+</span>
+
+<span>
+04
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =======================================================
+     SERVICES
+======================================================= -->
+
+<section
+class="page"
+data-page="services">
+
+<div class="container section">
+
+<div class="small-title">
+Наши услуги
+</div>
+
+<h2>
+От одной<br>
+ветки до полного<br>
+оформления.
+</h2>
+
+
+<div class="services-grid"
+style="margin-top:70px">
+
+
+<div class="service">
+
+<div class="service-number">
+01
+</div>
+
+<div>
+
+<h3>
+Авторские букеты
+</h3>
+
+<p>
+Композиции, созданные флористом
+под конкретный повод, настроение
+и бюджет.
+</p>
+
+</div>
+
+<div class="service-arrow">
+→
+</div>
+
+</div>
+
+
+<div class="service">
+
+<div class="service-number">
+02
+</div>
+
+<div>
+
+<h3>
+Свадебная флористика
+</h3>
+
+<p>
+Букет невесты, бутоньерки,
+композиции на столы и оформление
+церемонии.
+</p>
+
+</div>
+
+<div class="service-arrow">
+→
+</div>
+
+</div>
+
+
+<div class="service">
+
+<div class="service-number">
+03
+</div>
+
+<div>
+
+<h3>
+Оформление мероприятий
+</h3>
+
+<p>
+Создаём цветочную концепцию
+для презентаций, ужинов,
+вечеринок и праздников.
+</p>
+
+</div>
+
+<div class="service-arrow">
+→
+</div>
+
+</div>
+
+
+<div class="service">
+
+<div class="service-number">
+04
+</div>
+
+<div>
+
+<h3>
+Корпоративная флористика
+</h3>
+
+<p>
+Регулярная доставка цветов
+для офисов, ресторанов,
+отелей и компаний.
+</p>
+
+</div>
+
+<div class="service-arrow">
+→
+</div>
+
+</div>
+
+
+<div class="service">
+
+<div class="service-number">
+05
+</div>
+
+<div>
+
+<h3>
+Подарочные композиции
+</h3>
+
+<p>
+Цветы, упаковка и персональная
+открытка в едином визуальном
+стиле.
+</p>
+
+</div>
+
+<div class="service-arrow">
+→
+</div>
+
+</div>
+
+
+<div class="service">
+
+<div class="service-number">
+06
+</div>
+
+<div>
+
+<h3>
+Доставка по городу
+</h3>
+
+<p>
+Аккуратная доставка композиции
+в удобное для вас время.
+</p>
+
+</div>
+
+<div class="service-arrow">
+→
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =======================================================
+     CATALOG
+======================================================= -->
+
+<section
+class="page"
+data-page="catalog">
+
+<div class="container section">
+
+
+<div class="catalog-top">
+
+<div>
+
+<div class="small-title">
+Коллекция
+</div>
+
+<h2>
+Букеты VERA
+</h2>
+
+</div>
+
+
+<div class="search">
+
+<input
+type="search"
+id="searchInput"
+placeholder="Поиск по каталогу...">
+
+</div>
+
+</div>
+
+
+<div
+class="filters"
+id="filters">
+</div>
+
+
+<div
+class="products"
+id="products">
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =======================================================
+     PRODUCT
+======================================================= -->
+
+<section
+class="page"
+data-page="product">
+
+<div class="container section">
+
+<div id="productDetail"></div>
+
+</div>
+
+</section>
+
+
+
+<!-- =======================================================
+     CONTACT
+======================================================= -->
+
+<section
+class="page"
+data-page="contact">
+
+<div class="container section">
+
+<div class="contact-layout">
+
+
+<div class="contact-left">
+
+<div class="small-title">
+Контакты
+</div>
+
+<h2>
+Давайте<br>
+создадим<br>
+что-то красивое.
+</h2>
+
+
+<p>
+
+Расскажите, для какого события
+вам нужен букет. Мы предложим
+несколько вариантов композиции.
+
+</p>
+
+
+<div class="contact-details">
+
+
+<div class="contact-detail">
+
+<span>
+Телефон
+</span>
+
++7 (700) 123-45-67
+
+</div>
+
+
+<div class="contact-detail">
+
+<span>
+Почта
+</span>
+
+hello@vera-flower.kz
+
+</div>
+
+
+<div class="contact-detail">
+
+<span>
+Адрес
+</span>
+
+Алматы, Казахстан
+
+</div>
+
+
+<div class="contact-detail">
+
+<span>
+Время работы
+</span>
+
+Ежедневно, 09:00 — 21:00
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<form
+class="form"
+id="contactForm"
+novalidate>
+
+
+<div
+class="success"
+id="successMessage">
+
+Сообщение успешно отправлено.
+Мы свяжемся с вами в ближайшее время.
+
+</div>
+
+
+<div class="form-group">
+
+<label for="name">
+Ваше имя
+</label>
+
+<input
+id="name"
+type="text"
+placeholder="Имя">
+
+<div
+class="error"
+id="nameError">
+</div>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="email">
+Email
+</label>
+
+<input
+id="email"
+type="email"
+placeholder="example@mail.com">
+
+<div
+class="error"
+id="emailError">
+</div>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="phone">
+Телефон
+</label>
+
+<input
+id="phone"
+type="tel"
+placeholder="+7 700 000 00 00">
+
+<div
+class="error"
+id="phoneError">
+</div>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="message">
+Сообщение
+</label>
+
+<textarea
+id="message"
+placeholder="Расскажите о вашем заказе..."></textarea>
+
+<div
+class="error"
+id="messageError">
+</div>
+
+</div>
+
+
+<button
+class="btn btn-primary"
+type="submit">
+
+Отправить заявку
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =======================================================
+     404
+======================================================= -->
+
+<section
+class="page"
+data-page="404">
+
+<div class="container">
+
+<div class="not-found">
+
+<div class="not-found-number">
+404
+</div>
+
+<h2>
+Страница не найдена
+</h2>
+
+<p>
+
+Похоже, такой страницы не существует
+или адрес был введён неправильно.
+
+</p>
+
+<a
+href="#home"
+class="btn btn-primary">
+
+Вернуться на главную
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer>
+
+<div class="container">
+
+
+<div class="footer-grid">
+
+
+<div>
+
+<div class="footer-logo">
+VERA
+</div>
+
+<p class="footer-text">
+
+Авторская цветочная студия.
+Букеты и композиции с характером.
+
+</p>
+
+</div>
+
+
+<div>
+
+<h4>
+Навигация
+</h4>
+
+<div class="footer-links">
+
+<a href="#home">
+Главная
+</a>
+
+<a href="#about">
+О студии
+</a>
+
+<a href="#services">
+Услуги
+</a>
+
+<a href="#catalog">
+Каталог
+</a>
+
+<a href="#contact">
+Контакты
+</a>
+
+</div>
+
+</div>
+
+
+<div>
+
+<h4>
+Связаться
+</h4>
+
+<div class="footer-links">
+
+<a href="tel:+77001234567">
++7 (700) 123-45-67
+</a>
+
+<a href="mailto:hello@vera-flower.kz">
+hello@vera-flower.kz
+</a>
+
+<a href="#contact">
+Заказать букет
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="copyright">
+
+© 2026 VERA Flower Studio. Все права защищены.
+
+</div>
+
+</div>
+
+</footer>
+
+
+
+<!-- =======================================================
+     MODAL
+======================================================= -->
+
+<div
+class="modal-bg"
+id="modalBg">
+
+<div
+class="modal"
+id="modal">
+
+<button
+class="modal-close"
+id="modalClose">
+
+×
+
+</button>
+
+<div id="modalContent"></div>
+
+</div>
+
+</div>
+
+
+
+<script>
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
+
+const products = [
+
+{
+id: 1,
+name: "Bordeaux",
+category: "Авторские",
+price: 28500,
+description:
+"Глубокая композиция в оттенках бордо, белого и зелени.",
+image:
+"https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=1000&q=90"
+},
+
+{
+id: 2,
+name: "Белая линия",
+category: "Минимализм",
+price: 22000,
+description:
+"Чистая композиция из белых цветов с естественной зеленью.",
+image:
+"https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1000&q=90"
+},
+
+{
+id: 3,
+name: "Merlot",
+category: "Авторские",
+price: 32000,
+description:
+"Выразительный букет в насыщенной винной палитре.",
+image:
+"https://avatars.mds.yandex.net/get-mpic/16233762/2a000001985b29de63a8469237a66ebae957/orig"
+},
+
+{
+id: 4,
+name: "Red & White",
+category: "Классика",
+price: 24500,
+description:
+"Контрастная композиция из красных и белых цветов.",
+image:
+"https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1000&q=90"
+},
+
+{
+id: 5,
+name: "Тихое утро",
+category: "Минимализм",
+price: 19500,
+description:
+"Лёгкий букет с воздушной формой и мягкими оттенками.",
+image:
+"https://i.pinimg.com/736x/4b/1e/70/4b1e7025c4ef0ee0c92c2a736c89d8a7.jpg"
+},
+
+{
+id: 6,
+name: "Scarlet",
+category: "Классика",
+price: 27000,
+description:
+"Классическая композиция .",
+image:
+"https://i.pinimg.com/originals/7e/df/39/7edf39bb9820754f279e0cb5607c2a72.jpg?nii=t"
+},
+
+{
+id: 7,
+name: "Season",
+category: "Сезонные",
+price: 21000,
+description:
+"Сезонная композиция, состав которой меняется в течение года.",
+image:
+"https://i.pinimg.com/originals/a9/a9/ec/a9a9ec9561b2ba1097804853331c6138.jpg?nii=t"
+},
+
+{
+id: 8,
+name: "Grande",
+category: "Премиум",
+price: 45000,
+description:
+"Большая композиция для особенного события.",
+image:
+"https://i.pinimg.com/videos/thumbnails/originals/ba/2c/58/ba2c58bfeb51ced7e1ee53418b76b801.0000000.jpg"
+},
+
+{
+id: 9,
+name: "Noir",
+category: "Премиум",
+price: 39000,
+description:
+"Голандские розы.",
+image:
+"https://i.pinimg.com/736x/ac/4c/78/ac4c782781c9e0f46f33cabedbd66c64.jpg"
+}
+
+];
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let cart =
+JSON.parse(
+localStorage.getItem("veraCart")
+) || [];
+
+let activeFilter =
+localStorage.getItem("veraFilter")
+|| "Все";
+
+let searchValue = "";
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+const $ = selector =>
+document.querySelector(selector);
+
+const $$ = selector =>
+[...document.querySelectorAll(selector)];
+
+
+/* =========================================================
+   THEME
+========================================================= */
+
+let dark =
+localStorage.getItem("veraTheme")
+=== "dark";
+
+
+$("#themeButton").onclick = () => {
+
+dark = !dark;
+
+localStorage.setItem(
+"veraTheme",
+dark ? "dark" : "light"
+);
+
+if (dark) {
+
+document.body.style.background =
+"#20191c";
+
+document.body.style.color =
+"#f8f7f4";
+
+} else {
+
+document.body.style.background =
+"#f8f7f4";
+
+document.body.style.color =
+"#251e20";
+
+}
+
+};
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+$("#burgerButton").onclick = () => {
+
+$("#navLinks")
+.classList.toggle("open");
+
+};
+
+
+$$(".nav-links a").forEach(link => {
+
+link.onclick = () => {
+
+$("#navLinks")
+.classList.remove("open");
+
+};
+
+});
+
+
+/* =========================================================
+   FILTERS
+========================================================= */
+
+function renderFilters() {
+
+const categories = [
+
+"Все",
+
+...new Set(
+products.map(
+product => product.category
+)
+)
+
+];
+
+
+$("#filters").innerHTML =
+categories.map(category => `
+
+<button
+class="filter
+${activeFilter === category
+? "active"
+: ""}"
+data-filter="${category}">
+
+${category}
+
+</button>
+
+`).join("");
+
+
+$$(".filter").forEach(button => {
+
+button.onclick = () => {
+
+activeFilter =
+button.dataset.filter;
+
+localStorage.setItem(
+"veraFilter",
+activeFilter
+);
+
+renderFilters();
+
+renderProducts();
+
+};
+
+});
+
+}
+
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
+
+function getProducts() {
+
+return products.filter(product => {
+
+const categoryMatch =
+activeFilter === "Все"
+||
+product.category === activeFilter;
+
+const searchMatch =
+product.name
+.toLowerCase()
+.includes(
+searchValue.toLowerCase()
+)
+||
+product.description
+.toLowerCase()
+.includes(
+searchValue.toLowerCase()
+);
+
+return categoryMatch && searchMatch;
+
+});
+
+}
+
+
+function renderProducts() {
+
+const list =
+getProducts();
+
+
+if (!list.length) {
+
+$("#products").innerHTML = `
+
+<div
+style="
+grid-column:1/-1;
+padding:80px;
+background:white;
+text-align:center;
+">
+
+<h3>
+Ничего не найдено
+</h3>
+
+<p style="margin-top:10px">
+Попробуйте изменить запрос.
+</p>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+$("#products").innerHTML =
+list.map(product => `
+
+<article class="product">
+
+
+<a
+href="#product/${product.id}"
+class="product-image">
+
+<img
+src="${product.image}"
+alt="${product.name}"
+loading="lazy">
+
+<span class="product-category">
+${product.category}
+</span>
+
+</a>
+
+
+<div class="product-body">
+
+<h3>
+${product.name}
+</h3>
+
+<p>
+${product.description}
+</p>
+
+
+<div class="product-bottom">
+
+<div class="price">
+
+${product.price.toLocaleString("ru-RU")}
+₸
+
+</div>
+
+
+<button
+class="product-link"
+onclick="addToCart(${product.id})">
+
+В корзину
+
+</button>
+
+</div>
+
+</div>
+
+</article>
+
+`).join("");
+
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+$("#searchInput").addEventListener(
+"input",
+event => {
+
+searchValue =
+event.target.value;
+
+renderProducts();
+
+});
+
+
+/* =========================================================
+   CART
+========================================================= */
+
+function saveCart() {
+
+localStorage.setItem(
+"veraCart",
+JSON.stringify(cart)
+);
+
+}
+
+
+function updateCart() {
+
+$("#cartCount").textContent =
+cart.length;
+
+}
+
+
+function addToCart(id) {
+
+if (!cart.includes(id)) {
+
+cart.push(id);
+
+saveCart();
+
+updateCart();
+
+}
+
+openCart();
+
+}
+
+
+function removeFromCart(id) {
+
+cart =
+cart.filter(
+item => item !== id
+);
+
+saveCart();
+
+updateCart();
+
+openCart();
+
+}
+
+
+function clearCart() {
+
+cart = [];
+
+saveCart();
+
+updateCart();
+
+openCart();
+
+}
+
+
+function openCart() {
+
+if (!cart.length) {
+
+openModal(`
+
+<h2>
+Корзина пуста
+</h2>
+
+<p style="margin-top:15px">
+Добавьте понравившийся букет
+из каталога.
+</p>
+
+<br>
+
+<a
+href="#catalog"
+class="btn btn-primary"
+onclick="closeModal()">
+
+Открыть каталог
+
+</a>
+
+`);
+
+return;
+
+}
+
+
+const items =
+cart.map(
+id =>
+products.find(
+product => product.id === id
+)
+);
+
+
+const total =
+items.reduce(
+(sum, product) =>
+sum + product.price,
+0
+);
+
+
+openModal(`
+
+<h2>
+Корзина
+</h2>
+
+
+${items.map(product => `
+
+<div class="cart-item">
+
+<div>
+
+<strong>
+${product.name}
+</strong>
+
+<br>
+
+<span>
+${product.price.toLocaleString("ru-RU")}
+₸
+</span>
+
+</div>
+
+
+<button
+class="cart-remove"
+onclick="removeFromCart(${product.id})">
+
+Удалить
+
+</button>
+
+</div>
+
+`).join("")}
+
+
+<div class="cart-total">
+
+<span>
+Итого
+</span>
+
+<span class="burgundy">
+
+${total.toLocaleString("ru-RU")}
+₸
+
+</span>
+
+</div>
+
+
+<div
+style="margin-top:25px">
+
+<a
+href="#contact"
+class="btn btn-primary"
+onclick="closeModal()">
+
+Оформить заказ
+
+</a>
+
+<button
+class="btn btn-outline"
+onclick="clearCart()"
+style="margin-left:8px">
+
+Очистить
+
+</button>
+
+</div>
+
+`);
+
+}
+
+
+$("#cartButton").onclick =
+openCart;
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+function openModal(content) {
+
+$("#modalContent")
+.innerHTML = content;
+
+$("#modalBg")
+.classList.add("open");
+
+}
+
+
+function closeModal() {
+
+$("#modalBg")
+.classList.remove("open");
+
+}
+
+
+$("#modalClose").onclick =
+closeModal;
+
+
+$("#modalBg").onclick =
+event => {
+
+if (
+event.target ===
+$("#modalBg")
+) {
+
+closeModal();
+
+}
+
+};
+
+
+document.addEventListener(
+"keydown",
+event => {
+
+if (
+event.key === "Escape"
+) {
+
+closeModal();
+
+}
+
+});
+
+
+/* =========================================================
+   PRODUCT DETAIL
+========================================================= */
+
+function renderProduct(id) {
+
+const product =
+products.find(
+item =>
+item.id === Number(id)
+);
+
+
+if (!product) {
+
+location.hash =
+"#404";
+
+return;
+
+}
+
+
+$("#productDetail").innerHTML = `
+
+<div class="detail">
+
+
+<div class="detail-image">
+
+<img
+src="${product.image}"
+alt="${product.name}">
+
+</div>
+
+
+<div class="detail-info">
+
+<div class="small-title">
+
+${product.category}
+
+</div>
+
+
+<h1>
+
+${product.name}
+
+</h1>
+
+
+<p class="detail-description">
+
+${product.description}
+
+</p>
+
+
+<div class="detail-price">
+
+${product.price.toLocaleString("ru-RU")}
+₸
+
+</div>
+
+
+<div
+style="
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+">
+
+<button
+class="btn btn-primary"
+onclick="addToCart(${product.id})">
+
+Добавить в корзину
+
+</button>
+
+
+<a
+href="#catalog"
+class="btn btn-outline">
+
+Назад в каталог
+
+</a>
+
+</div>
+
+
+<div
+style="
+margin-top:50px;
+padding-top:25px;
+border-top:1px solid #ddd8d5;
+">
+
+<div class="small-title">
+О композиции
+</div>
+
+<p>
+
+Букет собирается непосредственно
+перед выдачей заказа. При наличии
+цветов состав может быть адаптирован
+флористом с сохранением общей
+цветовой концепции.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+/* =========================================================
+   FORM VALIDATION
+========================================================= */
+
+$("#contactForm").onsubmit =
+event => {
+
+event.preventDefault();
+
+
+$(".error").forEach(
+element =>
+element.textContent = ""
+);
+
+
+const name =
+$("#name").value.trim();
+
+const email =
+$("#email").value.trim();
+
+const phone =
+$("#phone").value.trim();
+
+const message =
+$("#message").value.trim();
+
+
+let valid = true;
+
+
+if (name.length < 2) {
+
+$("#nameError")
+.textContent =
+"Введите имя.";
+
+valid = false;
+
+}
+
+
+if (
+!/^[^\s@]+@[^\s@]+\.[^\s@]+$/
+.test(email)
+) {
+
+$("#emailError")
+.textContent =
+"Введите корректный email.";
+
+valid = false;
+
+}
+
+
+if (
+!/^[+\d\s()\-]{10,}$/
+.test(phone)
+) {
+
+$("#phoneError")
+.textContent =
+"Введите корректный номер.";
+
+valid = false;
+
+}
+
+
+if (message.length < 5) {
+
+$("#messageError")
+.textContent =
+"Сообщение слишком короткое.";
+
+valid = false;
+
+}
+
+
+if (valid) {
+
+$("#successMessage")
+.style.display =
+"block";
+
+$("#contactForm")
+.reset();
+
+setTimeout(
+() => {
+
+$("#successMessage")
+.style.display =
+"none";
+
+},
+5000
+);
+
+}
+
+};
+
+
+/* =========================================================
+   ROUTER
+========================================================= */
+
+function router() {
+
+let hash =
+location.hash
+.replace("#", "");
+
+if (!hash) {
+
+hash = "home";
+
+}
+
+
+const parts =
+hash.split("/");
+
+let page =
+parts[0];
+
+
+const pages = [
+"home",
+"about",
+"services",
+"catalog",
+"contact",
+"404"
+];
+
+
+if (
+page === "product"
+) {
+
+$$(".page").forEach(
+element => {
+
+element.classList.toggle(
+"active",
+element.dataset.page
+=== "product"
+);
+
+});
+
+renderProduct(parts[1]);
+
+}
+
+
+else {
+
+if (
+!pages.includes(page)
+) {
+
+page = "404";
+
+}
+
+
+$$(".page").forEach(
+element => {
+
+element.classList.toggle(
+"active",
+element.dataset.page
+=== page
+);
+
+});
+
+
+if (
+page === "catalog"
+) {
+
+renderFilters();
+
+renderProducts();
+
+}
+
+}
+
+
+window.scrollTo({
+top: 0,
+behavior: "smooth"
+});
+
+}
+
+
+/* =========================================================
+   IMAGE FALLBACK
+========================================================= */
+
+document.addEventListener(
+"error",
+event => {
+
+if (
+event.target.tagName === "IMG"
+) {
+
+event.target.src =
+"https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1000&q=80";
+
+}
+
+},
+true
+);
+
+
+/* =========================================================
+   INIT
+========================================================= */
+
+renderFilters();
+
+renderProducts();
+
+updateCart();
+
+window.addEventListener(
+"hashchange",
+router
+);
+
+router();
+
+</script>
+
+</body>
+</html>
